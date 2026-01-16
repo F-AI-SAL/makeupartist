@@ -17,6 +17,7 @@ export async function writeJson<T>(filePath: string, data: T): Promise<void> {
 }
 
 export function dataPath(fileName: string) {
-  const baseDir = process.env.VERCEL ? "/tmp" : process.cwd();
+  const baseDir =
+    process.env.VERCEL || process.env.NODE_ENV === "production" ? "/tmp" : process.cwd();
   return path.join(baseDir, "data", fileName);
 }
