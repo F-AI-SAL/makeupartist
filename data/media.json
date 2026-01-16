@@ -1,0 +1,16 @@
+[
+  {
+    "id": "media-1",
+    "title": "Bridal Glow Before/After",
+    "type": "image",
+    "url": "/images/portfolio/bridal-classic.png",
+    "tag": "before-after"
+  },
+  {
+    "id": "media-2",
+    "title": "Influencer Soft Glam",
+    "type": "video",
+    "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    "tag": "influencer"
+  }
+]

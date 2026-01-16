@@ -1,0 +1,329 @@
+{
+  "accessibility": {
+    "skipToContent": "Skip to content"
+  },
+  "languageToggle": {
+    "label": "Toggle language",
+    "toEn": "EN",
+    "toBn": "বাংলা"
+  },
+  "nav": {
+    "items": [
+      { "label": "Home", "href": "/" },
+      { "label": "About", "href": "/about" },
+      { "label": "Services", "href": "/services" },
+      { "label": "Pricing", "href": "/pricing" },
+      { "label": "Portfolio", "href": "/portfolio" },
+      { "label": "Blog", "href": "/blog" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "cta": "Book Now",
+    "menu": "Menu",
+    "phone": "Phone/WhatsApp: {{phone}}"
+  },
+  "home": {
+    "hero": {
+      "kicker": "GO & GLOW",
+      "title": "Premium Beauty Parlor in Mirpur-2",
+      "subtitle": "Bridal glow, party glam, skincare, and hair spa - crafted for your special moments.",
+      "ctaPrimary": "Book Appointment",
+      "ctaSecondary": "View Services",
+      "badge": "Premium hygiene + personalized care",
+      "imageAlt": "Go & Glow premium bridal look"
+    },
+    "stats": [
+      { "value": "8+", "label": "Years Experience" },
+      { "value": "1200+", "label": "Happy Clients" },
+      { "value": "250+", "label": "Bridal Looks" },
+      { "value": "92%", "label": "Repeat Customers" }
+    ],
+    "signatureServices": {
+      "title": "Signature Services",
+      "subtitle": "Curated beauty rituals for radiant skin and confident moments.",
+      "items": [
+        {
+          "title": "Bridal Makeup",
+          "description": "Long-lasting glow, flawless base, and custom tones for camera-ready perfection.",
+          "image": "/images/services/bridal.png"
+        },
+        {
+          "title": "Party Glam",
+          "description": "Soft glam to full glam tailored to your outfit and event mood.",
+          "image": "/images/services/party.png"
+        },
+        {
+          "title": "Skincare & Facials",
+          "description": "Glass skin glow, barrier repair, and hydra facial treatments.",
+          "image": "/images/services/facial.png"
+        }
+      ]
+    },
+    "meet": {
+      "title": "Meet the Artists",
+      "subtitle": "We personalize every look with skin-first care and modern techniques.",
+      "body": "Premium brushes, skin-friendly products, and an experienced team - your comfort is our priority.",
+      "cta": "Learn More",
+      "imageAlt": "Go & Glow artist team"
+    },
+    "why": {
+      "title": "Why customers love us",
+      "subtitle": "Comfort, hygiene, and custom looks that last.",
+      "points": [
+        "Skin-friendly, hygienic products",
+        "Custom looks for your outfit and skin tone",
+        "Professional team with reliable timing",
+        "Skincare consultation and after-care guidance",
+        "Premium parlor experience in Mirpur-2"
+      ],
+      "imageAlt": "Customer love and glow highlights"
+    },
+    "testimonials": {
+      "title": "Client Stories",
+      "subtitle": "Real feedback from real clients.",
+      "dot": "Testimonial {{index}}",
+      "items": [
+        "Go & Glow made my bridal look exactly how I dreamed - glowy, elegant, and long-lasting. The team was super friendly and professional.",
+        "Best service in Mirpur! The facial gave me an instant glow and my makeup stayed perfect for hours.",
+        "Loved the hygiene, behavior, and the overall experience. Booking was easy and they guided me throughout.",
+        "The party glam look was stunning yet natural. Highly recommended!"
+      ]
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "subtitle": "Real client transformations with timeless glow.",
+      "cta": "View Full Portfolio",
+      "items": [
+        { "title": "Bridal Classic", "image": "/images/portfolio/bridal-classic.png" },
+        { "title": "Soft Glam Party", "image": "/images/portfolio/soft-glam.png" },
+        { "title": "Maternity Glow", "image": "/images/portfolio/maternity-glow.png" }
+      ]
+    },
+    "blog": {
+      "title": "Beauty Journal",
+      "subtitle": "Skincare tips, bridal checklists, and beauty trends.",
+      "cta": "Read All Posts",
+      "readMore": "Read More"
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "Quick answers to common questions.",
+      "items": [
+        {
+          "question": "How early should I book an appointment?",
+          "answer": "For bridal bookings, contact us 2-3 weeks ahead. For party glam, 3-5 days is ideal."
+        },
+        {
+          "question": "How does the pre-bridal program work?",
+          "answer": "We offer 4-8 week routines with facials, consultation, and home-care tips."
+        },
+        {
+          "question": "How do I pay?",
+          "answer": "We accept bKash/cash for advance booking fee and the rest on service day."
+        }
+      ]
+    }
+  },
+  "about": {
+    "teamTitle": "Our Team",
+    "teamSubtitle": "From lead artists to skin specialists.",
+    "hero": {
+      "kicker": "About GO & GLOW",
+      "title": "Your trusted glow partner",
+      "subtitle": "Located in Mirpur-2, we craft premium, personalized beauty experiences.",
+      "cta": "Book Appointment",
+      "imageAlt": "Go & Glow artist profile"
+    },
+    "story": {
+      "title": "Our Story",
+      "body": "Go & Glow was born to celebrate confidence and self-care for every woman. We believe each look should be skin-friendly, photo-ready, and true to your personal style."
+    },
+    "values": {
+      "title": "Our Values",
+      "items": [
+        "Personalized skin and look consultation",
+        "Premium hygiene and sanitation standards",
+        "High-quality branded products",
+        "On-time delivery with stress-free experience"
+      ]
+    }
+  },
+  "services": {
+    "liveTitle": "Live service updates",
+    "liveSubtitle": "Latest services uploaded by admin.",
+    "kicker": "Services",
+    "title": "Classic + Trending Services",
+    "subtitle": "Build a routine that fits your style and skin goals.",
+    "classic": {
+      "title": "Classic Services",
+      "items": [
+        "Bridal Makeup",
+        "Party Makeup",
+        "Hair Styling (Blowout, Curls, Updo)",
+        "Facial & Skincare",
+        "Manicure / Pedicure",
+        "Waxing / Threading",
+        "Mehendi (optional)"
+      ]
+    },
+    "trending": {
+      "title": "2025/2026 Trending",
+      "items": [
+        "Glass Skin Facial (K-beauty glow)",
+        "Korean Skincare Consultation & Routine Setup",
+        "Hydra Facial / Aqua Facial",
+        "Lash Lift & Tint",
+        "Brow Lamination + Brow Styling",
+        "Skin Barrier Repair Facial",
+        "Scalp Detox & Hair Spa",
+        "Nail Extensions (Gel / Soft Gel tips)",
+        "Party Glam + Soft Glam packages",
+        "Pre-bridal skincare program (4/8 weeks)"
+      ]
+    }
+  },
+  "pricing": {
+    "offersTitle": "Weekly offers",
+    "offersSubtitle": "Current discounts and combo deals.",
+    "kicker": "Pricing",
+    "title": "Premium packages for every budget",
+    "subtitle": "Every package can be customized.",
+    "cta": "Book Now",
+    "tiers": [
+      {
+        "name": "Everyday Glow",
+        "price": "Starting from ৳1,500",
+        "description": "Daily events with minimal glow.",
+        "features": ["Light base", "Eye look", "Lip + blush", "Hair touch-up"]
+      },
+      {
+        "name": "Party Glam",
+        "price": "Starting from ৳3,500",
+        "description": "Photo-ready glam with long-lasting finish.",
+        "features": ["Full base", "Custom eye look", "Flawless contour", "Hair styling"],
+        "highlight": true
+      },
+      {
+        "name": "Bridal Signature",
+        "price": "Starting from ৳12,000",
+        "description": "Premium team support for your bridal day.",
+        "features": ["Full bridal look", "Long-wear finish", "Dupatta/hair set", "Skin prep kit"]
+      }
+    ]
+  },
+  "portfolio": {
+    "mediaTitle": "Media highlights",
+    "mediaSubtitle": "Before/after visuals, influencer videos, and live sessions.",
+    "kicker": "Portfolio",
+    "title": "Real Transformations",
+    "subtitle": "Every look tells a story.",
+    "items": [
+      { "title": "Bridal Classic", "image": "/images/portfolio/bridal-classic.png" },
+      { "title": "Soft Glam Party", "image": "/images/portfolio/soft-glam.png" },
+      { "title": "Maternity Glow", "image": "/images/portfolio/maternity-glow.png" },
+      { "title": "Photoshoot Glam", "image": "/images/portfolio/photoshoot.png" },
+      { "title": "Haldi Look", "image": "/images/portfolio/haldi.png" },
+      { "title": "Wedding Guest", "image": "/images/portfolio/guest.png" }
+    ]
+  },
+  "booking": {
+    "calendarTitle": "Fully booked calendar",
+    "calendarEmpty": "No fully booked days this week.",
+    "fullBooked": "Fully booked",
+    "available": "Available",
+    "paymentTitle": "Submit advance payment",
+    "paymentSubtitle": "Send via bKash or bank transfer and upload the slip.",
+    "payment": {
+      "phone": "Your phone number",
+      "amount": "Advance amount",
+      "transactionId": "Transaction ID",
+      "bookingId": "Booking ID (optional)",
+      "submit": "Submit Payment",
+      "success": "Payment submitted successfully.",
+      "error": "Sorry, please try again."
+    },
+    "kicker": "Booking",
+    "title": "Book Your Appointment",
+    "subtitle": "We will confirm within 24 hours.",
+    "note": "Plan early for bridal bookings.",
+    "integration": "Note: Email confirmations via SendGrid/Mailgun can be added later.",
+    "services": [
+      "Bridal Makeup",
+      "Party Glam",
+      "Glass Skin Facial",
+      "Hair Spa",
+      "Lash Lift & Tint",
+      "Brow Lamination",
+      "Skin Barrier Repair"
+    ],
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "phone": "Phone number",
+      "phonePlaceholder": "01xxxxxxxxx",
+      "service": "Choose service",
+      "servicePlaceholder": "Select a service",
+      "date": "Preferred date",
+      "time": "Preferred time",
+      "message": "Message",
+      "messagePlaceholder": "Add extra details",
+      "submit": "Send Booking",
+      "submitting": "Submitting...",
+      "success": "Your booking request has been sent!",
+      "error": "Sorry, please try again."
+    }
+  },
+  "contact": {
+    "kicker": "Contact",
+    "title": "Let's connect",
+    "subtitle": "Ask about bookings, services, or consultation.",
+    "mapTitle": "Location Map",
+    "mapPlaceholder": "Google Map embed goes here",
+    "spamNote": "Spam protection via Turnstile/CAPTCHA can be added later.",
+    "info": {
+      "title": "Contact Info",
+      "phone": "Phone/WhatsApp: {{phone}}",
+      "hours": "10:00 AM - 9:00 PM (Daily)"
+    },
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Enter your name",
+      "phone": "Phone number",
+      "phonePlaceholder": "01xxxxxxxxx",
+      "message": "Message",
+      "messagePlaceholder": "Type your question",
+      "submit": "Send Message",
+      "submitting": "Submitting...",
+      "success": "Your message has been sent!",
+      "error": "Sorry, please try again."
+    }
+  },
+  "blog": {
+    "kicker": "Blog",
+    "title": "Beauty Tips & Guides",
+    "subtitle": "Skincare trends, bridal prep, and party glam insights.",
+    "readMore": "Read More",
+    "post": {
+      "kicker": "Go & Glow Journal"
+    }
+  },
+  "footer": {
+    "tagline": "Premium beauty care | Mirpur-2, Dhaka",
+    "quickLinks": "Quick Links",
+    "visit": "Visit Us",
+    "phone": "Phone/WhatsApp: {{phone}}",
+    "links": [
+      { "label": "Home", "href": "/" },
+      { "label": "Services", "href": "/services" },
+      { "label": "Pricing", "href": "/pricing" },
+      { "label": "Booking", "href": "/book" },
+      { "label": "Blog", "href": "/blog" }
+    ],
+    "hours": ["Daily: 10:00 AM - 9:00 PM"],
+    "newsletter": "Newsletter",
+    "newsletterCopy": "Get beauty tips and offers in your inbox.",
+    "emailPlaceholder": "Your email",
+    "subscribe": "Subscribe",
+    "social": "Instagram | Facebook | YouTube",
+    "copy": "(c) {{year}} Go & Glow. All rights reserved."
+  }
+}
