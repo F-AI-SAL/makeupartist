@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-import type { ApiResponse } from "../../lib/api";
+import type { ApiResponse } from "../../../lib/api";
 import { dataPath, readJson } from "../../../lib/storage";
 
 const FILE_PATH = dataPath("offers.json");
