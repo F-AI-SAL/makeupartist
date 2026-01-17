@@ -9,13 +9,34 @@
   },
   "nav": {
     "items": [
-      { "label": "হোম", "href": "/" },
-      { "label": "আমাদের সম্পর্কে", "href": "/about" },
-      { "label": "সার্ভিসেস", "href": "/services" },
-      { "label": "প্রাইসিং", "href": "/pricing" },
-      { "label": "পোর্টফোলিও", "href": "/portfolio" },
-      { "label": "ব্লগ", "href": "/blog" },
-      { "label": "যোগাযোগ", "href": "/contact" }
+      {
+        "label": "হোম",
+        "href": "/"
+      },
+      {
+        "label": "আমাদের সম্পর্কে",
+        "href": "/about"
+      },
+      {
+        "label": "সার্ভিসেস",
+        "href": "/services"
+      },
+      {
+        "label": "প্রাইসিং",
+        "href": "/pricing"
+      },
+      {
+        "label": "পোর্টফোলিও",
+        "href": "/portfolio"
+      },
+      {
+        "label": "ব্লগ",
+        "href": "/blog"
+      },
+      {
+        "label": "যোগাযোগ",
+        "href": "/contact"
+      }
     ],
     "cta": "বুক নাও",
     "menu": "মেনু",
@@ -32,10 +53,22 @@
       "imageAlt": "Go & Glow এর প্রিমিয়াম ব্রাইডাল লুক"
     },
     "stats": [
-      { "value": "8+", "label": "বছরের অভিজ্ঞতা" },
-      { "value": "1200+", "label": "হ্যাপি ক্লায়েন্ট" },
-      { "value": "250+", "label": "ব্রাইডাল লুক" },
-      { "value": "92%", "label": "রিপিট কাস্টমার" }
+      {
+        "value": "8+",
+        "label": "বছরের অভিজ্ঞতা"
+      },
+      {
+        "value": "1200+",
+        "label": "হ্যাপি ক্লায়েন্ট"
+      },
+      {
+        "value": "250+",
+        "label": "ব্রাইডাল লুক"
+      },
+      {
+        "value": "92%",
+        "label": "রিপিট কাস্টমার"
+      }
     ],
     "signatureServices": {
       "title": "সিগনেচার সার্ভিসেস",
@@ -93,9 +126,18 @@
       "subtitle": "রিয়েল ক্লায়েন্ট ট্রান্সফর্মেশনস-গ্লো ইন রিয়েল লাইফ।",
       "cta": "সম্পূর্ণ পোর্টফোলিও দেখুন",
       "items": [
-        { "title": "ব্রাইডাল ক্লাসিক", "image": "/images/portfolio/bridal-classic.png" },
-        { "title": "সফট গ্ল্যাম পার্টি", "image": "/images/portfolio/soft-glam.png" },
-        { "title": "ম্যাটার্নিটি গ্লো", "image": "/images/portfolio/maternity-glow.png" }
+        {
+          "title": "ব্রাইডাল ক্লাসিক",
+          "image": "/images/portfolio/bridal-classic.png"
+        },
+        {
+          "title": "সফট গ্ল্যাম পার্টি",
+          "image": "/images/portfolio/soft-glam.png"
+        },
+        {
+          "title": "ম্যাটার্নিটি গ্লো",
+          "image": "/images/portfolio/maternity-glow.png"
+        }
       ]
     },
     "blog": {
@@ -179,7 +221,205 @@
         "পার্টি গ্ল্যাম + সফট গ্ল্যাম প্যাকেজ",
         "প্রি-ব্রাইডাল স্কিনকেয়ার প্রোগ্রাম (৪/৮ সপ্তাহ)"
       ]
-    }
+    },
+    "menuIntro": "???????? \"???? ????\" ????? ???? ?????? ???????? ??????? ???? ??????",
+    "priceListLabel": "????? ??????",
+    "viewAll": "?? ?????",
+    "menu": [
+      {
+        "title": "?????",
+        "description": "???????? ???? ???????????????, ????? ?? ?????? ???????? ?????? ????",
+        "image": "/images/services/bridal.png",
+        "align": "left",
+        "items": [
+          {
+            "name": "??????????",
+            "price": "700"
+          },
+          {
+            "name": "????????",
+            "price": "900"
+          },
+          {
+            "name": "???????",
+            "price": "2,500"
+          },
+          {
+            "name": "????????",
+            "price": "800"
+          },
+          {
+            "name": "???? ?????????",
+            "price": "2,200"
+          },
+          {
+            "name": "??????? ???????",
+            "price": "4,500"
+          },
+          {
+            "name": "????? ??????????",
+            "price": "2,800"
+          },
+          {
+            "name": "????? ?????",
+            "price": "3,200"
+          },
+          {
+            "name": "???????? / ???????",
+            "price": "600"
+          },
+          {
+            "name": "????? ????????????",
+            "price": "4,000"
+          }
+        ]
+      },
+      {
+        "title": "????? ????????",
+        "description": "??? ???? ?????????? ?????????? ??? ????? ??????",
+        "image": "/images/portfolio/soft-glam.png",
+        "align": "right",
+        "items": [
+          {
+            "name": "??????????",
+            "price": "700"
+          },
+          {
+            "name": "????????",
+            "price": "900"
+          },
+          {
+            "name": "???????",
+            "price": "2,500"
+          },
+          {
+            "name": "????????",
+            "price": "800"
+          },
+          {
+            "name": "???? ?????????",
+            "price": "2,200"
+          },
+          {
+            "name": "??????? ???????",
+            "price": "4,500"
+          },
+          {
+            "name": "????? ??????????",
+            "price": "2,800"
+          },
+          {
+            "name": "????? ?????",
+            "price": "3,200"
+          },
+          {
+            "name": "???????? / ???????",
+            "price": "600"
+          },
+          {
+            "name": "????? ????????????",
+            "price": "4,000"
+          }
+        ]
+      },
+      {
+        "title": "???? ?????",
+        "description": "?????, ????? ?? ??-??????? ???? ??????",
+        "image": "/images/portfolio/haldi.png",
+        "align": "left",
+        "badge": "????? ??????",
+        "items": [
+          {
+            "name": "??????????",
+            "price": "700"
+          },
+          {
+            "name": "????????",
+            "price": "900"
+          },
+          {
+            "name": "???????",
+            "price": "2,500"
+          },
+          {
+            "name": "????????",
+            "price": "800"
+          },
+          {
+            "name": "???? ?????????",
+            "price": "2,200"
+          },
+          {
+            "name": "??????? ???????",
+            "price": "4,500"
+          },
+          {
+            "name": "????? ??????????",
+            "price": "2,800"
+          },
+          {
+            "name": "????? ?????",
+            "price": "3,200"
+          },
+          {
+            "name": "???????? / ???????",
+            "price": "600"
+          },
+          {
+            "name": "????? ????????????",
+            "price": "4,000"
+          }
+        ]
+      },
+      {
+        "title": "????? & ?????????",
+        "description": "???? ??????? ?????????? ?? ????????, ??????? ??? ??????? ????",
+        "image": "/images/services/facial.png",
+        "align": "right",
+        "items": [
+          {
+            "name": "??????????",
+            "price": "700"
+          },
+          {
+            "name": "????????",
+            "price": "900"
+          },
+          {
+            "name": "???????",
+            "price": "2,500"
+          },
+          {
+            "name": "????????",
+            "price": "800"
+          },
+          {
+            "name": "???? ?????????",
+            "price": "2,200"
+          },
+          {
+            "name": "??????? ???????",
+            "price": "4,500"
+          },
+          {
+            "name": "????? ??????????",
+            "price": "2,800"
+          },
+          {
+            "name": "????? ?????",
+            "price": "3,200"
+          },
+          {
+            "name": "???????? / ???????",
+            "price": "600"
+          },
+          {
+            "name": "????? ????????????",
+            "price": "4,000"
+          }
+        ]
+      }
+    ]
   },
   "pricing": {
     "offersTitle": "সাপ্তাহিক অফার",
@@ -193,22 +433,39 @@
         "name": "Everyday Glow",
         "price": "Starting from ৳1,500",
         "description": "ডে-টু-ডে ইভেন্ট ও মিনিমাল গ্লো লুক।",
-        "features": ["লাইট বেস", "আই-লুক", "লিপ + ব্লাশ", "হেয়ার টাচ-আপ"]
+        "features": [
+          "লাইট বেস",
+          "আই-লুক",
+          "লিপ + ব্লাশ",
+          "হেয়ার টাচ-আপ"
+        ]
       },
       {
         "name": "Party Glam",
         "price": "Starting from ৳3,500",
         "description": "ফটো-রেডি পার্টি গ্ল্যাম ও লং-লাস্টিং ফিনিশ।",
-        "features": ["ফুল বেস", "কাস্টম আই লুক", "ফ্ললেস কনট্যুর", "হেয়ার স্টাইলিং"],
+        "features": [
+          "ফুল বেস",
+          "কাস্টম আই লুক",
+          "ফ্ললেস কনট্যুর",
+          "হেয়ার স্টাইলিং"
+        ],
         "highlight": true
       },
       {
         "name": "Bridal Signature",
         "price": "Starting from ৳12,000",
         "description": "ব্রাইডাল ডে-এর জন্য প্রিমিয়াম টিম ও এক্সট্রা কেয়ার।",
-        "features": ["ফুল ব্রাইডাল লুক", "লং-ওয়্যার ফিনিশ", "ডুপাট্টা/হেয়ার সেট", "স্কিন প্রিপ কিট"]
+        "features": [
+          "ফুল ব্রাইডাল লুক",
+          "লং-ওয়্যার ফিনিশ",
+          "ডুপাট্টা/হেয়ার সেট",
+          "স্কিন প্রিপ কিট"
+        ]
       }
-    ]
+    ],
+    "priceListTitle": "?????? ?????",
+    "priceListSubtitle": "??????? ???????????? ???? ???? ????"
   },
   "portfolio": {
     "mediaTitle": "মিডিয়া হাইলাইটস",
@@ -217,12 +474,30 @@
     "title": "রিয়েল ট্রান্সফর্মেশনস",
     "subtitle": "প্রতিটি লুক একেকটি গল্প।",
     "items": [
-      { "title": "ব্রাইডাল ক্লাসিক", "image": "/images/portfolio/bridal-classic.png" },
-      { "title": "সফট গ্ল্যাম পার্টি", "image": "/images/portfolio/soft-glam.png" },
-      { "title": "ম্যাটার্নিটি গ্লো", "image": "/images/portfolio/maternity-glow.png" },
-      { "title": "ফটোশুট গ্ল্যাম", "image": "/images/portfolio/photoshoot.png" },
-      { "title": "হালকা হালুদি লুক", "image": "/images/portfolio/haldi.png" },
-      { "title": "ওয়েডিং গেস্ট লুক", "image": "/images/portfolio/guest.png" }
+      {
+        "title": "ব্রাইডাল ক্লাসিক",
+        "image": "/images/portfolio/bridal-classic.png"
+      },
+      {
+        "title": "সফট গ্ল্যাম পার্টি",
+        "image": "/images/portfolio/soft-glam.png"
+      },
+      {
+        "title": "ম্যাটার্নিটি গ্লো",
+        "image": "/images/portfolio/maternity-glow.png"
+      },
+      {
+        "title": "ফটোশুট গ্ল্যাম",
+        "image": "/images/portfolio/photoshoot.png"
+      },
+      {
+        "title": "হালকা হালুদি লুক",
+        "image": "/images/portfolio/haldi.png"
+      },
+      {
+        "title": "ওয়েডিং গেস্ট লুক",
+        "image": "/images/portfolio/guest.png"
+      }
     ]
   },
   "booking": {
@@ -312,13 +587,30 @@
     "visit": "আমাদের ঠিকানা",
     "phone": "ফোন/হোয়াটসঅ্যাপ: {{phone}}",
     "links": [
-      { "label": "হোম", "href": "/" },
-      { "label": "সার্ভিসেস", "href": "/services" },
-      { "label": "প্রাইসিং", "href": "/pricing" },
-      { "label": "বুকিং", "href": "/book" },
-      { "label": "ব্লগ", "href": "/blog" }
+      {
+        "label": "হোম",
+        "href": "/"
+      },
+      {
+        "label": "সার্ভিসেস",
+        "href": "/services"
+      },
+      {
+        "label": "প্রাইসিং",
+        "href": "/pricing"
+      },
+      {
+        "label": "বুকিং",
+        "href": "/book"
+      },
+      {
+        "label": "ব্লগ",
+        "href": "/blog"
+      }
     ],
-    "hours": ["প্রতিদিন: সকাল ১০টা - রাত ৯টা"],
+    "hours": [
+      "প্রতিদিন: সকাল ১০টা - রাত ৯টা"
+    ],
     "newsletter": "নিউজলেটার",
     "newsletterCopy": "বিউটি টিপস ও অফার পেতে ইমেইল দিন।",
     "emailPlaceholder": "আপনার ইমেইল",

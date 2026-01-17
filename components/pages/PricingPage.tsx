@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Button } from "../ui/button";
+import ServiceMenu from "../sections/ServiceMenu";
 
 export default function PricingPage() {
   const { t } = useTranslation();
@@ -15,6 +16,7 @@ export default function PricingPage() {
     features: string[];
     highlight?: boolean;
   }>;
+  const menu = t("services.menu", { returnObjects: true }) as Array<any>;
   const [offers, setOffers] = useState<Array<any>>([]);
 
   useEffect(() => {
@@ -56,6 +58,12 @@ export default function PricingPage() {
             </CardContent>
           </Card>
         ))}
+      </div>
+
+      <div className="mt-16">
+        <h2 className="section-title">{t("pricing.priceListTitle")}</h2>
+        <p className="section-subtitle">{t("pricing.priceListSubtitle")}</p>
+        <ServiceMenu sections={menu} viewAllLabel={t("services.viewAll")} />
       </div>
 
       {offers.length > 0 && (

@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import ServiceMenu from "../sections/ServiceMenu";
 
 export default function ServicesPage() {
   const { t } = useTranslation();
   const classic = t("services.classic.items", { returnObjects: true }) as string[];
   const trending = t("services.trending.items", { returnObjects: true }) as string[];
+  const menu = t("services.menu", { returnObjects: true }) as Array<any>;
   const [liveServices, setLiveServices] = useState<Array<any>>([]);
 
   useEffect(() => {
@@ -26,10 +28,13 @@ export default function ServicesPage() {
         <p className="text-sm uppercase tracking-[0.2em] text-peach-600">{t("services.kicker")}</p>
         <h1 className="mt-4 font-serif text-4xl text-neutral-900 md:text-5xl">{t("services.title")}</h1>
         <p className="mt-4 text-base text-neutral-600 md:text-lg">{t("services.subtitle")}</p>
+        <p className="mt-3 text-sm text-neutral-500">{t("services.menuIntro")}</p>
       </div>
 
+      <ServiceMenu sections={menu} viewAllLabel={t("services.viewAll")} />
+
       {liveServices.length > 0 && (
-        <div className="mt-12">
+        <div className="mt-16">
           <h2 className="section-title">{t("services.liveTitle")}</h2>
           <p className="section-subtitle">{t("services.liveSubtitle")}</p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">

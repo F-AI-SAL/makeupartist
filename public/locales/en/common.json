@@ -9,13 +9,34 @@
   },
   "nav": {
     "items": [
-      { "label": "Home", "href": "/" },
-      { "label": "About", "href": "/about" },
-      { "label": "Services", "href": "/services" },
-      { "label": "Pricing", "href": "/pricing" },
-      { "label": "Portfolio", "href": "/portfolio" },
-      { "label": "Blog", "href": "/blog" },
-      { "label": "Contact", "href": "/contact" }
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "label": "Portfolio",
+        "href": "/portfolio"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      },
+      {
+        "label": "Contact",
+        "href": "/contact"
+      }
     ],
     "cta": "Book Now",
     "menu": "Menu",
@@ -32,10 +53,22 @@
       "imageAlt": "Go & Glow premium bridal look"
     },
     "stats": [
-      { "value": "8+", "label": "Years Experience" },
-      { "value": "1200+", "label": "Happy Clients" },
-      { "value": "250+", "label": "Bridal Looks" },
-      { "value": "92%", "label": "Repeat Customers" }
+      {
+        "value": "8+",
+        "label": "Years Experience"
+      },
+      {
+        "value": "1200+",
+        "label": "Happy Clients"
+      },
+      {
+        "value": "250+",
+        "label": "Bridal Looks"
+      },
+      {
+        "value": "92%",
+        "label": "Repeat Customers"
+      }
     ],
     "signatureServices": {
       "title": "Signature Services",
@@ -93,9 +126,18 @@
       "subtitle": "Real client transformations with timeless glow.",
       "cta": "View Full Portfolio",
       "items": [
-        { "title": "Bridal Classic", "image": "/images/portfolio/bridal-classic.png" },
-        { "title": "Soft Glam Party", "image": "/images/portfolio/soft-glam.png" },
-        { "title": "Maternity Glow", "image": "/images/portfolio/maternity-glow.png" }
+        {
+          "title": "Bridal Classic",
+          "image": "/images/portfolio/bridal-classic.png"
+        },
+        {
+          "title": "Soft Glam Party",
+          "image": "/images/portfolio/soft-glam.png"
+        },
+        {
+          "title": "Maternity Glow",
+          "image": "/images/portfolio/maternity-glow.png"
+        }
       ]
     },
     "blog": {
@@ -179,7 +221,205 @@
         "Party Glam + Soft Glam packages",
         "Pre-bridal skincare program (4/8 weeks)"
       ]
-    }
+    },
+    "menuIntro": "Explore our curated service menu with transparent starting prices.",
+    "priceListLabel": "Price list",
+    "viewAll": "View all",
+    "menu": [
+      {
+        "title": "Makeup",
+        "description": "From bridal to party glam, tailored to your skin tone, outfit, and event lighting.",
+        "image": "/images/services/bridal.png",
+        "align": "left",
+        "items": [
+          {
+            "name": "Manicure",
+            "price": "From 700"
+          },
+          {
+            "name": "Pedicure",
+            "price": "From 900"
+          },
+          {
+            "name": "Facial",
+            "price": "From 2,500"
+          },
+          {
+            "name": "Haircut",
+            "price": "From 800"
+          },
+          {
+            "name": "Nail extensions",
+            "price": "From 2,200"
+          },
+          {
+            "name": "Hydra facial",
+            "price": "From 4,500"
+          },
+          {
+            "name": "Hair treatment",
+            "price": "From 2,800"
+          },
+          {
+            "name": "Hair coloring",
+            "price": "From 3,200"
+          },
+          {
+            "name": "Waxing / Threading",
+            "price": "From 600"
+          },
+          {
+            "name": "Hair straightening",
+            "price": "From 4,000"
+          }
+        ]
+      },
+      {
+        "title": "Hair Styling",
+        "description": "Cuts, blowouts, and event-ready styles that last through Dhaka heat and humidity.",
+        "image": "/images/portfolio/soft-glam.png",
+        "align": "right",
+        "items": [
+          {
+            "name": "Manicure",
+            "price": "From 700"
+          },
+          {
+            "name": "Pedicure",
+            "price": "From 900"
+          },
+          {
+            "name": "Facial",
+            "price": "From 2,500"
+          },
+          {
+            "name": "Haircut",
+            "price": "From 800"
+          },
+          {
+            "name": "Nail extensions",
+            "price": "From 2,200"
+          },
+          {
+            "name": "Hydra facial",
+            "price": "From 4,500"
+          },
+          {
+            "name": "Hair treatment",
+            "price": "From 2,800"
+          },
+          {
+            "name": "Hair coloring",
+            "price": "From 3,200"
+          },
+          {
+            "name": "Waxing / Threading",
+            "price": "From 600"
+          },
+          {
+            "name": "Hair straightening",
+            "price": "From 4,000"
+          }
+        ]
+      },
+      {
+        "title": "Nail Care",
+        "description": "Clean, glossy nails with durable finishes and minimal maintenance.",
+        "image": "/images/portfolio/haldi.png",
+        "align": "left",
+        "badge": "Price list",
+        "items": [
+          {
+            "name": "Manicure",
+            "price": "From 700"
+          },
+          {
+            "name": "Pedicure",
+            "price": "From 900"
+          },
+          {
+            "name": "Facial",
+            "price": "From 2,500"
+          },
+          {
+            "name": "Haircut",
+            "price": "From 800"
+          },
+          {
+            "name": "Nail extensions",
+            "price": "From 2,200"
+          },
+          {
+            "name": "Hydra facial",
+            "price": "From 4,500"
+          },
+          {
+            "name": "Hair treatment",
+            "price": "From 2,800"
+          },
+          {
+            "name": "Hair coloring",
+            "price": "From 3,200"
+          },
+          {
+            "name": "Waxing / Threading",
+            "price": "From 600"
+          },
+          {
+            "name": "Hair straightening",
+            "price": "From 4,000"
+          }
+        ]
+      },
+      {
+        "title": "Skin & Cosmetology",
+        "description": "Glow-focused treatments that calm, hydrate, and repair your barrier.",
+        "image": "/images/services/facial.png",
+        "align": "right",
+        "items": [
+          {
+            "name": "Manicure",
+            "price": "From 700"
+          },
+          {
+            "name": "Pedicure",
+            "price": "From 900"
+          },
+          {
+            "name": "Facial",
+            "price": "From 2,500"
+          },
+          {
+            "name": "Haircut",
+            "price": "From 800"
+          },
+          {
+            "name": "Nail extensions",
+            "price": "From 2,200"
+          },
+          {
+            "name": "Hydra facial",
+            "price": "From 4,500"
+          },
+          {
+            "name": "Hair treatment",
+            "price": "From 2,800"
+          },
+          {
+            "name": "Hair coloring",
+            "price": "From 3,200"
+          },
+          {
+            "name": "Waxing / Threading",
+            "price": "From 600"
+          },
+          {
+            "name": "Hair straightening",
+            "price": "From 4,000"
+          }
+        ]
+      }
+    ]
   },
   "pricing": {
     "offersTitle": "Weekly offers",
@@ -193,22 +433,39 @@
         "name": "Everyday Glow",
         "price": "Starting from ৳1,500",
         "description": "Daily events with minimal glow.",
-        "features": ["Light base", "Eye look", "Lip + blush", "Hair touch-up"]
+        "features": [
+          "Light base",
+          "Eye look",
+          "Lip + blush",
+          "Hair touch-up"
+        ]
       },
       {
         "name": "Party Glam",
         "price": "Starting from ৳3,500",
         "description": "Photo-ready glam with long-lasting finish.",
-        "features": ["Full base", "Custom eye look", "Flawless contour", "Hair styling"],
+        "features": [
+          "Full base",
+          "Custom eye look",
+          "Flawless contour",
+          "Hair styling"
+        ],
         "highlight": true
       },
       {
         "name": "Bridal Signature",
         "price": "Starting from ৳12,000",
         "description": "Premium team support for your bridal day.",
-        "features": ["Full bridal look", "Long-wear finish", "Dupatta/hair set", "Skin prep kit"]
+        "features": [
+          "Full bridal look",
+          "Long-wear finish",
+          "Dupatta/hair set",
+          "Skin prep kit"
+        ]
       }
-    ]
+    ],
+    "priceListTitle": "Price list",
+    "priceListSubtitle": "Transparent starting prices for popular services."
   },
   "portfolio": {
     "mediaTitle": "Media highlights",
@@ -217,12 +474,30 @@
     "title": "Real Transformations",
     "subtitle": "Every look tells a story.",
     "items": [
-      { "title": "Bridal Classic", "image": "/images/portfolio/bridal-classic.png" },
-      { "title": "Soft Glam Party", "image": "/images/portfolio/soft-glam.png" },
-      { "title": "Maternity Glow", "image": "/images/portfolio/maternity-glow.png" },
-      { "title": "Photoshoot Glam", "image": "/images/portfolio/photoshoot.png" },
-      { "title": "Haldi Look", "image": "/images/portfolio/haldi.png" },
-      { "title": "Wedding Guest", "image": "/images/portfolio/guest.png" }
+      {
+        "title": "Bridal Classic",
+        "image": "/images/portfolio/bridal-classic.png"
+      },
+      {
+        "title": "Soft Glam Party",
+        "image": "/images/portfolio/soft-glam.png"
+      },
+      {
+        "title": "Maternity Glow",
+        "image": "/images/portfolio/maternity-glow.png"
+      },
+      {
+        "title": "Photoshoot Glam",
+        "image": "/images/portfolio/photoshoot.png"
+      },
+      {
+        "title": "Haldi Look",
+        "image": "/images/portfolio/haldi.png"
+      },
+      {
+        "title": "Wedding Guest",
+        "image": "/images/portfolio/guest.png"
+      }
     ]
   },
   "booking": {
@@ -312,13 +587,30 @@
     "visit": "Visit Us",
     "phone": "Phone/WhatsApp: {{phone}}",
     "links": [
-      { "label": "Home", "href": "/" },
-      { "label": "Services", "href": "/services" },
-      { "label": "Pricing", "href": "/pricing" },
-      { "label": "Booking", "href": "/book" },
-      { "label": "Blog", "href": "/blog" }
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "Services",
+        "href": "/services"
+      },
+      {
+        "label": "Pricing",
+        "href": "/pricing"
+      },
+      {
+        "label": "Booking",
+        "href": "/book"
+      },
+      {
+        "label": "Blog",
+        "href": "/blog"
+      }
     ],
-    "hours": ["Daily: 10:00 AM - 9:00 PM"],
+    "hours": [
+      "Daily: 10:00 AM - 9:00 PM"
+    ],
     "newsletter": "Newsletter",
     "newsletterCopy": "Get beauty tips and offers in your inbox.",
     "emailPlaceholder": "Your email",
