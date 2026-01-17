@@ -1,28 +1,28 @@
 import type { OfferWithStatus } from "./offers";
 import type { ServiceItem } from "./services-data";
-import { siteConfig } from "./site";
+import type { SiteConfig } from "./site";
 
-export function buildLocalBusinessJsonLd() {
+export function buildLocalBusinessJsonLd(site: SiteConfig) {
   return {
     "@context": "https://schema.org",
     "@type": "BeautySalon",
-    name: siteConfig.name,
-    description: siteConfig.description,
-    url: siteConfig.url,
-    telephone: siteConfig.phone,
+    name: site.name,
+    description: site.description,
+    url: site.url,
+    telephone: site.phone,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dhaka",
       addressRegion: "Dhaka",
       addressCountry: "BD",
-      streetAddress: siteConfig.address
+      streetAddress: site.address
     },
     areaServed: "Dhaka",
     priceRange: "$$"
   };
 }
 
-export function buildServiceJsonLd(services: ServiceItem[]) {
+export function buildServiceJsonLd(site: SiteConfig, services: ServiceItem[]) {
   return services.map((service) => ({
     "@context": "https://schema.org",
     "@type": "Service",
@@ -30,10 +30,10 @@ export function buildServiceJsonLd(services: ServiceItem[]) {
     description: service.description || "",
     provider: {
       "@type": "BeautySalon",
-      name: siteConfig.name,
+      name: site.name,
       address: {
         "@type": "PostalAddress",
-        streetAddress: siteConfig.address,
+        streetAddress: site.address,
         addressLocality: "Dhaka",
         addressCountry: "BD"
       }
@@ -56,7 +56,7 @@ export function buildFaqJsonLd(items: Array<{ question: string; answer: string }
   };
 }
 
-export function buildOfferJsonLd(offer: OfferWithStatus) {
+export function buildOfferJsonLd(site: SiteConfig, offer: OfferWithStatus) {
   return {
     "@context": "https://schema.org",
     "@type": "Offer",
@@ -67,10 +67,10 @@ export function buildOfferJsonLd(offer: OfferWithStatus) {
     availability: offer.isActive ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
     validFrom: offer.startDate,
     validThrough: offer.endDate,
-    url: `${siteConfig.url}/offer/${offer.slug}`,
+    url: `${site.url}/offer/${offer.slug}`,
     seller: {
       "@type": "BeautySalon",
-      name: siteConfig.name
+      name: site.name
     }
   };
 }

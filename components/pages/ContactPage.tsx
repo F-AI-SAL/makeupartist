@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import ContactForm from "../sections/ContactForm";
@@ -7,6 +8,19 @@ import { siteConfig } from "../../lib/site";
 
 export default function ContactPage() {
   const { t } = useTranslation();
+  const [site, setSite] = useState(siteConfig);
+
+  useEffect(() => {
+    const load = async () => {
+      const response = await fetch("/api/site");
+      if (!response.ok) return;
+      const json = await response.json();
+      if (json?.data) {
+        setSite(json.data);
+      }
+    };
+    void load();
+  }, []);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
@@ -19,8 +33,8 @@ export default function ContactPage() {
         <div className="space-y-4">
           <div className="rounded-2xl bg-white/80 p-6 shadow-card">
             <p className="text-sm font-semibold text-neutral-800">{t("contact.info.title")}</p>
-            <p className="mt-2 text-sm text-neutral-600">{siteConfig.address}</p>
-            <p className="mt-2 text-sm text-neutral-600">{t("contact.info.phone", { phone: siteConfig.phone })}</p>
+            <p className="mt-2 text-sm text-neutral-600">{site.address}</p>
+            <p className="mt-2 text-sm text-neutral-600">{t("contact.info.phone", { phone: site.phone })}</p>
             <p className="mt-2 text-sm text-neutral-500">{t("contact.info.hours")}</p>
           </div>
           <div className="rounded-2xl bg-white/80 p-6 shadow-card">

@@ -3,20 +3,23 @@ import Link from "next/link";
 
 import { getServerT } from "../../lib/i18n-server";
 import { getOffers } from "../../lib/offers";
-import { siteConfig } from "../../lib/site";
+import { getSiteConfig } from "../../lib/site";
 
-export const metadata: Metadata = {
-  title: "Offers",
-  description: "Weekly beauty deals and limited-time offers from Go & Glow.",
-  alternates: {
-    canonical: "/offers"
-  },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await getSiteConfig();
+  return {
     title: "Offers",
     description: "Weekly beauty deals and limited-time offers from Go & Glow.",
-    url: `${siteConfig.url}/offers`
-  }
-};
+    alternates: {
+      canonical: "/offers"
+    },
+    openGraph: {
+      title: "Offers",
+      description: "Weekly beauty deals and limited-time offers from Go & Glow.",
+      url: `${site.url}/offers`
+    }
+  };
+}
 
 export default async function OffersPage() {
   const t = await getServerT();

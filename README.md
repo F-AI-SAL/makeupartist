@@ -21,6 +21,7 @@ Open `http://localhost:3000`.
 
 - URL: `/admin`
 - Password: set `ADMIN_PASSWORD` in `.env.local` (see `.env.example`)
+- Admin tools: update site settings, service menu JSON, offers, services, and uploads.
 
 ## Scripts
 
@@ -38,6 +39,8 @@ npm run start
 - Pricing tiers: `public/locales/bn/common.json`, `public/locales/en/common.json` -> `pricing.tiers`
 - Testimonials: `public/locales/bn/common.json`, `public/locales/en/common.json` -> `home.testimonials.items`
 - Offers data: `data/offers.json`
+- Service menu data: `data/service-menu.json`
+- Site settings: `data/site.json` (phone, address, socials, pixel ID)
 
 ## Add blog posts (MDX)
 

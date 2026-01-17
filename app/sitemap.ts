@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 
-import { siteConfig } from "../lib/site";
+import { getSiteConfig } from "../lib/site";
 import { getOffers } from "../lib/offers";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const site = await getSiteConfig();
   const routes = [
     "",
     "/about",
@@ -19,7 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const offerRoutes = offers.map((offer) => `/offer/${offer.slug}`);
 
   return [...routes, ...offerRoutes].map((route) => ({
-    url: `${siteConfig.url}${route}`,
+    url: `${site.url}${route}`,
     lastModified: new Date()
   }));
 }

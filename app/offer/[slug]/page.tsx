@@ -6,7 +6,7 @@ import { Button } from "../../../components/ui/button";
 import { getOffers, getOfferBySlug } from "../../../lib/offers";
 import { buildOfferJsonLd } from "../../../lib/jsonld";
 import { getServerT } from "../../../lib/i18n-server";
-import { siteConfig } from "../../../lib/site";
+import { getSiteConfig } from "../../../lib/site";
 
 export async function generateStaticParams() {
   const offers = await getOffers();
@@ -18,6 +18,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   if (!offer) {
     return {};
   }
+  const site = await getSiteConfig();
   return {
     title: offer.title,
     description: offer.description,
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     openGraph: {
       title: offer.title,
       description: offer.description,
-      url: `${siteConfig.url}/offer/${offer.slug}`
+      url: `${site.url}/offer/${offer.slug}`
     }
   };
 }
@@ -38,10 +39,11 @@ export default async function OfferPage({ params }: { params: { slug: string } }
     notFound();
   }
   const t = await getServerT();
+  const site = await getSiteConfig();
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 md:px-6">
-      <JsonLd id={`offer-jsonld-${offer.slug}`} data={buildOfferJsonLd(offer)} />
+      <JsonLd id={`offer-jsonld-${offer.slug}`} data={buildOfferJsonLd(site, offer)} />
       <div className="card-surface p-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>

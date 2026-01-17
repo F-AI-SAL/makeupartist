@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
@@ -13,12 +13,25 @@ export default function Navbar() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const navItems = t("nav.items", { returnObjects: true }) as Array<{ label: string; href: string }>;
+  const [site, setSite] = useState(siteConfig);
+
+  useEffect(() => {
+    const load = async () => {
+      const response = await fetch("/api/site");
+      if (!response.ok) return;
+      const json = await response.json();
+      if (json?.data) {
+        setSite(json.data);
+      }
+    };
+    void load();
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 border-b border-peach-100/60 bg-white/70 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 md:px-6">
         <Link href="/" className="font-serif text-xl text-neutral-900">
-          {siteConfig.name}
+          {site.name}
         </Link>
         <div className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
@@ -59,7 +72,7 @@ export default function Navbar() {
               <Button asChild>
                 <Link href="/book">{t("nav.cta")}</Link>
               </Button>
-              <p className="text-xs text-neutral-500">{t("nav.phone", { phone: siteConfig.phone })}</p>
+              <p className="text-xs text-neutral-500">{t("nav.phone", { phone: site.phone })}</p>
             </div>
           </motion.div>
         )}

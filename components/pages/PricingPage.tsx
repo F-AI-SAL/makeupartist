@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
@@ -8,7 +8,7 @@ import { Button } from "../ui/button";
 import ServiceMenu from "../sections/ServiceMenu";
 
 export default function PricingPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const tiers = t("pricing.tiers", { returnObjects: true }) as Array<{
     name: string;
     price: string;
@@ -16,7 +16,11 @@ export default function PricingPage() {
     features: string[];
     highlight?: boolean;
   }>;
-  const menu = t("services.menu", { returnObjects: true }) as Array<any>;
+  const fallbackMenu = useMemo(
+    () => t("services.menu", { returnObjects: true }) as Array<any>,
+    [t]
+  );
+  const [menu, setMenu] = useState<Array<any>>(fallbackMenu);
   const [offers, setOffers] = useState<Array<any>>([]);
 
   useEffect(() => {
@@ -27,6 +31,19 @@ export default function PricingPage() {
     };
     void load();
   }, []);
+
+  useEffect(() => {
+    const loadMenu = async () => {
+      const response = await fetch("/api/menu");
+      if (!response.ok) return;
+      const data = await response.json();
+      const menuData = data?.data;
+      const selected =
+        menuData?.[i18n.language] || menuData?.bn || menuData?.en || fallbackMenu;
+      setMenu(selected);
+    };
+    void loadMenu();
+  }, [fallbackMenu, i18n.language]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">

@@ -88,5 +88,18 @@
     "time": "16:00",
     "message": "Bridal appointment for evening.",
     "createdAt": "2026-01-17T19:23:29.654Z"
+  },
+  {
+    "id": "597318f9-efe4-4b0e-865b-b6fa77fa9c6d",
+    "name": "Maymuna",
+    "phone": "01841940602",
+    "service": "Brow Lamination",
+    "date": "2026-01-23",
+    "time": "05:31",
+    "message": "",
+    "utm": {
+      "referrer": "http://localhost:3000/offer/weekly-glow-deal"
+    },
+    "createdAt": "2026-01-17T19:27:53.096Z"
   }
 ]

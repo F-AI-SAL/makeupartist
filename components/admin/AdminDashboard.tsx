@@ -19,6 +19,21 @@ export default function AdminDashboard() {
   const [media, setMedia] = useState<Array<any>>([]);
   const [payments, setPayments] = useState<Array<any>>([]);
   const [status, setStatus] = useState<string>("");
+  const [siteSettings, setSiteSettings] = useState({
+    name: "",
+    description: "",
+    phone: "",
+    address: "",
+    pixelId: "",
+    socials: {
+      facebook: "",
+      instagram: "",
+      youtube: "",
+      tiktok: "",
+      whatsapp: ""
+    }
+  });
+  const [menuDraft, setMenuDraft] = useState<string>("");
 
   const [newService, setNewService] = useState(emptyService);
   const [newTeam, setNewTeam] = useState(emptyTeam);
@@ -27,13 +42,15 @@ export default function AdminDashboard() {
   const [calendarDraft, setCalendarDraft] = useState<string>("");
 
   const sync = async () => {
-    const [svc, tm, off, cal, med, pay] = await Promise.all([
+    const [svc, tm, off, cal, med, pay, site, menu] = await Promise.all([
       fetch("/api/admin/services").then((r) => r.json()),
       fetch("/api/admin/team").then((r) => r.json()),
       fetch("/api/admin/offers").then((r) => r.json()),
       fetch("/api/admin/calendar").then((r) => r.json()),
       fetch("/api/admin/media").then((r) => r.json()),
-      fetch("/api/admin/payments").then((r) => r.json())
+      fetch("/api/admin/payments").then((r) => r.json()),
+      fetch("/api/admin/site").then((r) => r.json()),
+      fetch("/api/admin/menu").then((r) => r.json())
     ]);
     setServices(svc.data || []);
     setTeam(tm.data || []);
@@ -42,6 +59,25 @@ export default function AdminDashboard() {
     setMedia(med.data || []);
     setPayments(pay.data || []);
     setCalendarDraft(JSON.stringify(cal.data || { dates: [] }, null, 2));
+    if (site?.data) {
+      setSiteSettings({
+        name: site.data.name || "",
+        description: site.data.description || "",
+        phone: site.data.phone || "",
+        address: site.data.address || "",
+        pixelId: site.data.pixelId || "",
+        socials: {
+          facebook: site.data.socials?.facebook || "",
+          instagram: site.data.socials?.instagram || "",
+          youtube: site.data.socials?.youtube || "",
+          tiktok: site.data.socials?.tiktok || "",
+          whatsapp: site.data.socials?.whatsapp || ""
+        }
+      });
+    }
+    if (menu?.data) {
+      setMenuDraft(JSON.stringify(menu.data, null, 2));
+    }
   };
 
   useEffect(() => {
@@ -88,6 +124,39 @@ export default function AdminDashboard() {
       await sync();
     } catch {
       setStatus("Calendar JSON invalid.");
+    }
+  };
+
+  const saveSiteSettings = async () => {
+    const response = await fetch("/api/admin/site", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(siteSettings)
+    });
+    if (!response.ok) {
+      setStatus("Site settings save failed.");
+      return;
+    }
+    setStatus("Site settings saved.");
+    await sync();
+  };
+
+  const saveMenu = async () => {
+    try {
+      const parsed = JSON.parse(menuDraft);
+      const response = await fetch("/api/admin/menu", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed)
+      });
+      if (!response.ok) {
+        setStatus("Menu save failed.");
+        return;
+      }
+      setStatus("Service menu saved.");
+      await sync();
+    } catch {
+      setStatus("Service menu JSON invalid.");
     }
   };
 
@@ -165,6 +234,96 @@ export default function AdminDashboard() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
+        <h2 className="font-serif text-2xl text-neutral-900">Site Settings</h2>
+        <p className="mt-1 text-sm text-neutral-600">Update phone, address, and social links.</p>
+        <div className="mt-4 grid gap-3 md:grid-cols-2">
+          <Input
+            placeholder="Brand name"
+            value={siteSettings.name}
+            onChange={(e) => setSiteSettings({ ...siteSettings, name: e.target.value })}
+          />
+          <Input
+            placeholder="Phone"
+            value={siteSettings.phone}
+            onChange={(e) => setSiteSettings({ ...siteSettings, phone: e.target.value })}
+          />
+          <Input
+            placeholder="Address"
+            value={siteSettings.address}
+            onChange={(e) => setSiteSettings({ ...siteSettings, address: e.target.value })}
+          />
+          <Input
+            placeholder="Meta Pixel ID (optional)"
+            value={siteSettings.pixelId}
+            onChange={(e) => setSiteSettings({ ...siteSettings, pixelId: e.target.value })}
+          />
+          <Textarea
+            placeholder="Short description"
+            value={siteSettings.description}
+            onChange={(e) => setSiteSettings({ ...siteSettings, description: e.target.value })}
+          />
+          <div className="grid gap-2">
+            <Input
+              placeholder="Facebook URL"
+              value={siteSettings.socials.facebook}
+              onChange={(e) =>
+                setSiteSettings({
+                  ...siteSettings,
+                  socials: { ...siteSettings.socials, facebook: e.target.value }
+                })
+              }
+            />
+            <Input
+              placeholder="Instagram URL"
+              value={siteSettings.socials.instagram}
+              onChange={(e) =>
+                setSiteSettings({
+                  ...siteSettings,
+                  socials: { ...siteSettings.socials, instagram: e.target.value }
+                })
+              }
+            />
+            <Input
+              placeholder="YouTube URL"
+              value={siteSettings.socials.youtube}
+              onChange={(e) =>
+                setSiteSettings({
+                  ...siteSettings,
+                  socials: { ...siteSettings.socials, youtube: e.target.value }
+                })
+              }
+            />
+            <Input
+              placeholder="TikTok URL"
+              value={siteSettings.socials.tiktok}
+              onChange={(e) =>
+                setSiteSettings({
+                  ...siteSettings,
+                  socials: { ...siteSettings.socials, tiktok: e.target.value }
+                })
+              }
+            />
+            <Input
+              placeholder="WhatsApp URL"
+              value={siteSettings.socials.whatsapp}
+              onChange={(e) =>
+                setSiteSettings({
+                  ...siteSettings,
+                  socials: { ...siteSettings.socials, whatsapp: e.target.value }
+                })
+              }
+            />
+          </div>
+        </div>
+        <p className="mt-3 text-xs text-neutral-500">
+          Tip: PIXEL_ID env var overrides this pixel field on production.
+        </p>
+        <Button className="mt-4" onClick={saveSiteSettings}>
+          Save Site Settings
+        </Button>
       </section>
 
       <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
@@ -268,6 +427,19 @@ export default function AdminDashboard() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
+        <h2 className="font-serif text-2xl text-neutral-900">Service Menu (BN + EN)</h2>
+        <p className="text-sm text-neutral-600">Edit JSON for service menu items and images.</p>
+        <Textarea
+          className="mt-4 min-h-[240px] font-mono text-xs"
+          value={menuDraft}
+          onChange={(e) => setMenuDraft(e.target.value)}
+        />
+        <Button className="mt-4" onClick={saveMenu}>
+          Save Service Menu
+        </Button>
       </section>
 
       <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">

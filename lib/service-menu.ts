@@ -1,0 +1,105 @@
+import { dataPath, readJson } from "./storage";
+
+export type ServiceMenuItem = {
+  name: string;
+  price: string;
+};
+
+export type ServiceMenuSection = {
+  title: string;
+  description: string;
+  image: string;
+  align?: "left" | "right";
+  badge?: string;
+  items: ServiceMenuItem[];
+};
+
+export type ServiceMenuData = {
+  en: ServiceMenuSection[];
+  bn: ServiceMenuSection[];
+};
+
+const MENU_PATH = dataPath("service-menu.json");
+
+export const defaultServiceMenu: ServiceMenuData = {
+  en: [
+    {
+      title: "Makeup",
+      description: "Custom looks for bridal, party, and photoshoot sessions.",
+      image: "/images/services/bridal.png",
+      align: "left",
+      items: [
+        { name: "Manicure", price: "From 700" },
+        { name: "Pedicure", price: "From 900" },
+        { name: "Facial", price: "From 2500" },
+        { name: "Haircut", price: "From 800" },
+        { name: "Nail extensions", price: "From 2200" },
+        { name: "Hydra facial", price: "From 4500" },
+        { name: "Hair treatment", price: "From 2800" },
+        { name: "Hair coloring", price: "From 3200" },
+        { name: "Waxing / Threading", price: "From 600" },
+        { name: "Hair straightening", price: "From 4000" }
+      ]
+    },
+    {
+      title: "Hair Styling",
+      description: "Everyday and event-ready styling that lasts.",
+      image: "/images/portfolio/soft-glam.png",
+      align: "right",
+      items: [
+        { name: "Manicure", price: "From 700" },
+        { name: "Pedicure", price: "From 900" },
+        { name: "Facial", price: "From 2500" },
+        { name: "Haircut", price: "From 800" },
+        { name: "Nail extensions", price: "From 2200" },
+        { name: "Hydra facial", price: "From 4500" },
+        { name: "Hair treatment", price: "From 2800" },
+        { name: "Hair coloring", price: "From 3200" },
+        { name: "Waxing / Threading", price: "From 600" },
+        { name: "Hair straightening", price: "From 4000" }
+      ]
+    }
+  ],
+  bn: [
+    {
+      title: "মেকআপ",
+      description: "ব্রাইডাল, পার্টি ও ফটোশুটের জন্য কাস্টম লুক।",
+      image: "/images/services/bridal.png",
+      align: "left",
+      items: [
+        { name: "ম্যানিকিউর", price: "শুরু 700" },
+        { name: "পেডিকিউর", price: "শুরু 900" },
+        { name: "ফেসিয়াল", price: "শুরু 2500" },
+        { name: "হেয়ারকাট", price: "শুরু 800" },
+        { name: "নেইল এক্সটেনশন", price: "শুরু 2200" },
+        { name: "হাইড্রা ফেসিয়াল", price: "শুরু 4500" },
+        { name: "হেয়ার ট্রিটমেন্ট", price: "শুরু 2800" },
+        { name: "হেয়ার কালার", price: "শুরু 3200" },
+        { name: "ওয়াক্সিং / থ্রেডিং", price: "শুরু 600" },
+        { name: "হেয়ার স্ট্রেইটেনিং", price: "শুরু 4000" }
+      ]
+    },
+    {
+      title: "হেয়ার স্টাইলিং",
+      description: "দৈনন্দিন ও পার্টির জন্য স্টাইলিং সার্ভিস।",
+      image: "/images/portfolio/soft-glam.png",
+      align: "right",
+      items: [
+        { name: "ম্যানিকিউর", price: "শুরু 700" },
+        { name: "পেডিকিউর", price: "শুরু 900" },
+        { name: "ফেসিয়াল", price: "শুরু 2500" },
+        { name: "হেয়ারকাট", price: "শুরু 800" },
+        { name: "নেইল এক্সটেনশন", price: "শুরু 2200" },
+        { name: "হাইড্রা ফেসিয়াল", price: "শুরু 4500" },
+        { name: "হেয়ার ট্রিটমেন্ট", price: "শুরু 2800" },
+        { name: "হেয়ার কালার", price: "শুরু 3200" },
+        { name: "ওয়াক্সিং / থ্রেডিং", price: "শুরু 600" },
+        { name: "হেয়ার স্ট্রেইটেনিং", price: "শুরু 4000" }
+      ]
+    }
+  ]
+};
+
+export async function getServiceMenu(): Promise<ServiceMenuData> {
+  return await readJson(MENU_PATH, defaultServiceMenu);
+}

@@ -5,5 +5,15 @@
     "phone": "01841940602",
     "message": "hlw how are you ",
     "createdAt": "2026-01-15T18:20:28.852Z"
+  },
+  {
+    "id": "6dbcc412-bae3-4181-b25f-53e15f09213f",
+    "name": "Maymuna",
+    "phone": "01841940602",
+    "message": "hlw where are ypur location",
+    "utm": {
+      "referrer": "http://localhost:3000/offer/weekly-glow-deal"
+    },
+    "createdAt": "2026-01-17T19:29:33.114Z"
   }
 ]
