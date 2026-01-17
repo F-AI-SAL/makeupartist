@@ -4,11 +4,11 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import ContactForm from "../sections/ContactForm";
-import { siteConfig } from "../../lib/site";
+import { siteConfigClient } from "../../lib/site-client";
 
 export default function ContactPage() {
   const { t } = useTranslation();
-  const [site, setSite] = useState(siteConfig);
+  const [site, setSite] = useState(siteConfigClient);
 
   useEffect(() => {
     const load = async () => {

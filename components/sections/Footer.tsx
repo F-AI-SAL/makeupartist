@@ -4,13 +4,13 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { siteConfig } from "../../lib/site";
+import { siteConfigClient } from "../../lib/site-client";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 export default function Footer() {
   const { t } = useTranslation();
-  const [site, setSite] = useState(siteConfig);
+  const [site, setSite] = useState(siteConfigClient);
   const links = t("footer.links", { returnObjects: true }) as Array<{ label: string; href: string }>;
   const hours = t("footer.hours", { returnObjects: true }) as string[];
   const socials = useMemo(

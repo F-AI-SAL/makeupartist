@@ -10,6 +10,15 @@ const emptyService = { id: "", title: "", description: "", image: "", price: "" 
 const emptyTeam = { id: "", name: "", role: "", image: "", bio: "" };
 const emptyOffer = { id: "", title: "", description: "", discount: "", startDate: "", endDate: "" };
 const emptyMedia = { id: "", title: "", type: "image", url: "", tag: "" };
+const emptyMenuItem = { name: "", price: "" };
+const emptyMenuSection = {
+  title: "",
+  description: "",
+  image: "",
+  align: "left",
+  badge: "",
+  items: [emptyMenuItem]
+};
 
 export default function AdminDashboard() {
   const [services, setServices] = useState<Array<any>>([]);
@@ -33,7 +42,7 @@ export default function AdminDashboard() {
       whatsapp: ""
     }
   });
-  const [menuDraft, setMenuDraft] = useState<string>("");
+  const [menuData, setMenuData] = useState<{ en: Array<any>; bn: Array<any> }>({ en: [], bn: [] });
 
   const [newService, setNewService] = useState(emptyService);
   const [newTeam, setNewTeam] = useState(emptyTeam);
@@ -76,7 +85,10 @@ export default function AdminDashboard() {
       });
     }
     if (menu?.data) {
-      setMenuDraft(JSON.stringify(menu.data, null, 2));
+      setMenuData({
+        en: Array.isArray(menu.data.en) ? menu.data.en : [],
+        bn: Array.isArray(menu.data.bn) ? menu.data.bn : []
+      });
     }
   };
 
@@ -142,22 +154,67 @@ export default function AdminDashboard() {
   };
 
   const saveMenu = async () => {
-    try {
-      const parsed = JSON.parse(menuDraft);
-      const response = await fetch("/api/admin/menu", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(parsed)
-      });
-      if (!response.ok) {
-        setStatus("Menu save failed.");
-        return;
-      }
-      setStatus("Service menu saved.");
-      await sync();
-    } catch {
-      setStatus("Service menu JSON invalid.");
+    const response = await fetch("/api/admin/menu", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(menuData)
+    });
+    if (!response.ok) {
+      setStatus("Menu save failed.");
+      return;
     }
+    setStatus("Service menu saved.");
+    await sync();
+  };
+
+  const updateSection = (lang: "en" | "bn", index: number, patch: Record<string, unknown>) => {
+    setMenuData((prev) => {
+      const updated = [...prev[lang]];
+      updated[index] = { ...updated[index], ...patch };
+      return { ...prev, [lang]: updated };
+    });
+  };
+
+  const addSection = (lang: "en" | "bn") => {
+    setMenuData((prev) => ({ ...prev, [lang]: [...prev[lang], { ...emptyMenuSection }] }));
+  };
+
+  const removeSection = (lang: "en" | "bn", index: number) => {
+    setMenuData((prev) => ({ ...prev, [lang]: prev[lang].filter((_, i) => i !== index) }));
+  };
+
+  const updateItem = (lang: "en" | "bn", sectionIndex: number, itemIndex: number, patch: Record<string, unknown>) => {
+    setMenuData((prev) => {
+      const updatedSections = [...prev[lang]];
+      const section = { ...updatedSections[sectionIndex] };
+      const items = Array.isArray(section.items) ? [...section.items] : [];
+      items[itemIndex] = { ...items[itemIndex], ...patch };
+      section.items = items;
+      updatedSections[sectionIndex] = section;
+      return { ...prev, [lang]: updatedSections };
+    });
+  };
+
+  const addItem = (lang: "en" | "bn", sectionIndex: number) => {
+    setMenuData((prev) => {
+      const updatedSections = [...prev[lang]];
+      const section = { ...updatedSections[sectionIndex] };
+      const items = Array.isArray(section.items) ? [...section.items, { ...emptyMenuItem }] : [{ ...emptyMenuItem }];
+      section.items = items;
+      updatedSections[sectionIndex] = section;
+      return { ...prev, [lang]: updatedSections };
+    });
+  };
+
+  const removeItem = (lang: "en" | "bn", sectionIndex: number, itemIndex: number) => {
+    setMenuData((prev) => {
+      const updatedSections = [...prev[lang]];
+      const section = { ...updatedSections[sectionIndex] };
+      const items = Array.isArray(section.items) ? section.items.filter((_: any, i: number) => i !== itemIndex) : [];
+      section.items = items;
+      updatedSections[sectionIndex] = section;
+      return { ...prev, [lang]: updatedSections };
+    });
   };
 
   const nextId = useRef(Date.now().toString());
@@ -431,12 +488,111 @@ export default function AdminDashboard() {
 
       <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
         <h2 className="font-serif text-2xl text-neutral-900">Service Menu (BN + EN)</h2>
-        <p className="text-sm text-neutral-600">Edit JSON for service menu items and images.</p>
-        <Textarea
-          className="mt-4 min-h-[240px] font-mono text-xs"
-          value={menuDraft}
-          onChange={(e) => setMenuDraft(e.target.value)}
-        />
+        <p className="text-sm text-neutral-600">
+          Add sections and items in Bangla and English. Images can be uploaded or pasted as URLs.
+        </p>
+        {(["bn", "en"] as Array<"bn" | "en">).map((lang) => (
+          <div key={lang} className="mt-6 rounded-2xl border border-peach-100 bg-white/60 p-4">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-neutral-700">
+                {lang === "bn" ? "বাংলা মেনু" : "English menu"}
+              </p>
+              <Button variant="outline" size="sm" onClick={() => addSection(lang)}>
+                Add section
+              </Button>
+            </div>
+            <div className="mt-4 space-y-5">
+              {menuData[lang].map((section, sectionIndex) => (
+                <div key={`${lang}-${sectionIndex}`} className="rounded-xl border border-peach-100 p-4">
+                  <div className="flex items-center justify-between">
+                    <p className="text-sm font-semibold">Section {sectionIndex + 1}</p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => removeSection(lang, sectionIndex)}
+                    >
+                      Remove
+                    </Button>
+                  </div>
+                  <div className="mt-3 grid gap-3 md:grid-cols-2">
+                    <Input
+                      placeholder="Title"
+                      value={section.title}
+                      onChange={(e) => updateSection(lang, sectionIndex, { title: e.target.value })}
+                    />
+                    <Input
+                      placeholder="Badge (optional)"
+                      value={section.badge || ""}
+                      onChange={(e) => updateSection(lang, sectionIndex, { badge: e.target.value })}
+                    />
+                    <Textarea
+                      placeholder="Short description"
+                      value={section.description}
+                      onChange={(e) => updateSection(lang, sectionIndex, { description: e.target.value })}
+                    />
+                    <div className="space-y-2">
+                      <Input
+                        placeholder="Image URL"
+                        value={section.image}
+                        onChange={(e) => updateSection(lang, sectionIndex, { image: e.target.value })}
+                      />
+                      <Input
+                        type="file"
+                        onChange={async (e) => {
+                          if (!e.target.files?.[0]) return;
+                          const url = await uploadFile(e.target.files[0], "services");
+                          updateSection(lang, sectionIndex, { image: url });
+                        }}
+                      />
+                    </div>
+                    <select
+                      className="h-11 w-full rounded-xl border border-peach-100 bg-white/80 px-4 text-sm"
+                      value={section.align || "left"}
+                      onChange={(e) => updateSection(lang, sectionIndex, { align: e.target.value })}
+                    >
+                      <option value="left">Image left</option>
+                      <option value="right">Image right</option>
+                    </select>
+                  </div>
+                  <div className="mt-4 space-y-3">
+                    {section.items?.map((item: any, itemIndex: number) => (
+                      <div key={`${lang}-${sectionIndex}-${itemIndex}`} className="grid gap-3 md:grid-cols-[1fr_1fr_auto]">
+                        <Input
+                          placeholder="Item name"
+                          value={item.name}
+                          onChange={(e) =>
+                            updateItem(lang, sectionIndex, itemIndex, { name: e.target.value })
+                          }
+                        />
+                        <Input
+                          placeholder="Price"
+                          value={item.price}
+                          onChange={(e) =>
+                            updateItem(lang, sectionIndex, itemIndex, { price: e.target.value })
+                          }
+                        />
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => removeItem(lang, sectionIndex, itemIndex)}
+                        >
+                          Remove
+                        </Button>
+                      </div>
+                    ))}
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => addItem(lang, sectionIndex)}
+                    >
+                      Add item
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
         <Button className="mt-4" onClick={saveMenu}>
           Save Service Menu
         </Button>

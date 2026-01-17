@@ -7,13 +7,13 @@ import { useTranslation } from "react-i18next";
 
 import { Button } from "../ui/button";
 import LanguageToggle from "../LanguageToggle";
-import { siteConfig } from "../../lib/site";
+import { siteConfigClient } from "../../lib/site-client";
 
 export default function Navbar() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const navItems = t("nav.items", { returnObjects: true }) as Array<{ label: string; href: string }>;
-  const [site, setSite] = useState(siteConfig);
+  const [site, setSite] = useState(siteConfigClient);
 
   useEffect(() => {
     const load = async () => {
