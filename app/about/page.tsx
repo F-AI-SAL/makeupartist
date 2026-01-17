@@ -4,7 +4,10 @@ import AboutPage from "../../components/pages/AboutPage";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Go & Glow এর গল্প, টিম এবং ভ্যালু।"
+  description: "Meet the Go & Glow team and learn about our beauty philosophy.",
+  alternates: {
+    canonical: "/about"
+  }
 };
 
 export default function About() {

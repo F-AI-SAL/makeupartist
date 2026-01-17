@@ -7,8 +7,28 @@
   --color-mist: #fff7f2;
   --color-cream: #fffaf6;
   --color-accent: #ff7d57;
+  --color-blush: #ffe2d3;
+  --color-muted: #70534a;
   --font-serif: "Playfair Display";
   --font-sans: "Manrope";
+}
+
+.theme-peach {
+  --color-ink: #38241f;
+  --color-mist: #fff7f2;
+  --color-cream: #fffaf6;
+  --color-accent: #ff7d57;
+  --color-blush: #ffe2d3;
+  --color-muted: #70534a;
+}
+
+.theme-pearl {
+  --color-ink: #3c2a23;
+  --color-mist: #fff6f1;
+  --color-cream: #f9f6f2;
+  --color-accent: #f18c77;
+  --color-blush: #f7ded1;
+  --color-muted: #6c534a;
 }
 
 * {

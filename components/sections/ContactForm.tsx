@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 
 import { contactSchema, type ContactInput } from "../../lib/validation";
+import { readUtmFromStorage } from "../../lib/utm";
+import { trackPixel } from "../../lib/pixel";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -27,15 +29,18 @@ export default function ContactForm() {
   const onSubmit = async (values: ContactInput) => {
     setStatus("idle");
     try {
+      const utm = readUtmFromStorage();
+      const payload = utm ? { ...values, utm } : values;
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values)
+        body: JSON.stringify(payload)
       });
       if (!response.ok) {
         throw new Error("Request failed");
       }
       setStatus("success");
+      trackPixel("Lead", { source: "contact", ...utm });
       reset();
     } catch (error) {
       setStatus("error");

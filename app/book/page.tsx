@@ -4,7 +4,10 @@ import BookPage from "../../components/pages/BookPage";
 
 export const metadata: Metadata = {
   title: "Book Appointment",
-  description: "Go & Glow এর জন্য অ্যাপয়েন্টমেন্ট বুক করুন।"
+  description: "Book your Go & Glow appointment in Mirpur-2, Dhaka.",
+  alternates: {
+    canonical: "/book"
+  }
 };
 
 export default function Book() {

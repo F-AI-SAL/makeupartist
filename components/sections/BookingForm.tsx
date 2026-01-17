@@ -6,6 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "react-i18next";
 
 import { bookingSchema, type BookingInput } from "../../lib/validation";
+import { readUtmFromStorage } from "../../lib/utm";
+import { trackPixel } from "../../lib/pixel";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -28,15 +30,19 @@ export default function BookingForm() {
   const onSubmit = async (values: BookingInput) => {
     setStatus("idle");
     try {
+      const utm = readUtmFromStorage();
+      const payload = utm ? { ...values, utm } : values;
       const response = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values)
+        body: JSON.stringify(payload)
       });
       if (!response.ok) {
         throw new Error("Request failed");
       }
       setStatus("success");
+      trackPixel("Lead", { source: "booking", ...utm });
+      trackPixel("CompleteRegistration", { source: "booking", ...utm });
       reset();
     } catch (error) {
       setStatus("error");

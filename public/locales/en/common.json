@@ -26,6 +26,10 @@
         "href": "/pricing"
       },
       {
+        "label": "Offers",
+        "href": "/offers"
+      },
+      {
         "label": "Portfolio",
         "href": "/portfolio"
       },
@@ -163,6 +167,13 @@
           "answer": "We accept bKash/cash for advance booking fee and the rest on service day."
         }
       ]
+    },
+    "offersCta": {
+      "kicker": "Offers",
+      "title": "Limited-time glow deals to book faster",
+      "subtitle": "Explore weekly bundles and seasonal discounts curated for Dhaka events.",
+      "primary": "View offers",
+      "secondary": "Book appointment"
     }
   },
   "about": {
@@ -465,7 +476,8 @@
       }
     ],
     "priceListTitle": "Price list",
-    "priceListSubtitle": "Transparent starting prices for popular services."
+    "priceListSubtitle": "Transparent starting prices for popular services.",
+    "offersCta": "See all offers"
   },
   "portfolio": {
     "mediaTitle": "Media highlights",
@@ -600,6 +612,10 @@
         "href": "/pricing"
       },
       {
+        "label": "Offers",
+        "href": "/offers"
+      },
+      {
         "label": "Booking",
         "href": "/book"
       },
@@ -617,5 +633,17 @@
     "subscribe": "Subscribe",
     "social": "Instagram | Facebook | YouTube",
     "copy": "(c) {{year}} Go & Glow. All rights reserved."
+  },
+  "offers": {
+    "kicker": "Offers",
+    "title": "Weekly Offers & Deals",
+    "subtitle": "Limited-time packages and glow bundles designed for quick conversions.",
+    "validity": "Valid",
+    "active": "Active now",
+    "upcoming": "Upcoming",
+    "expired": "Expired",
+    "viewDetails": "View details",
+    "bookNow": "Book now",
+    "backToOffers": "Back to offers"
   }
 }

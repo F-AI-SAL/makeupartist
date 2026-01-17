@@ -4,7 +4,10 @@ import PortfolioPage from "../../components/pages/PortfolioPage";
 
 export const metadata: Metadata = {
   title: "Portfolio",
-  description: "Go & Glow এর রিয়েল ক্লায়েন্ট ট্রান্সফর্মেশনস।"
+  description: "Browse bridal and party makeup transformations from Go & Glow.",
+  alternates: {
+    canonical: "/portfolio"
+  }
 };
 
 export default function Portfolio() {

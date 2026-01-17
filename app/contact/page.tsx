@@ -4,7 +4,10 @@ import ContactPage from "../../components/pages/ContactPage";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Go & Glow এর সাথে যোগাযোগ করুন।"
+  description: "Get in touch with Go & Glow for bookings, offers, and consultations.",
+  alternates: {
+    canonical: "/contact"
+  }
 };
 
 export default function Contact() {

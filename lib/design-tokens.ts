@@ -1,10 +1,19 @@
 export const designTokens = {
-  colors: {
-    background: "#fffaf6",
-    peach: "#ff7d57",
-    ink: "#38241f",
-    blush: "#ffe2d3",
-    muted: "#70534a"
+  themes: {
+    peach: {
+      background: "#fffaf6",
+      accent: "#ff7d57",
+      ink: "#38241f",
+      blush: "#ffe2d3",
+      muted: "#70534a"
+    },
+    pearl: {
+      background: "#f9f6f2",
+      accent: "#f18c77",
+      ink: "#3c2a23",
+      blush: "#f7ded1",
+      muted: "#6c534a"
+    }
   },
   typography: {
     heading: "Playfair Display",

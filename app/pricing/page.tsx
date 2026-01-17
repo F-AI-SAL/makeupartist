@@ -4,7 +4,10 @@ import PricingPage from "../../components/pages/PricingPage";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Go & Glow এর প্রাইসিং টিয়ারসমূহ।"
+  description: "Transparent starting prices for Go & Glow packages and services.",
+  alternates: {
+    canonical: "/pricing"
+  }
 };
 
 export default function Pricing() {

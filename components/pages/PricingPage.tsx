@@ -68,8 +68,15 @@ export default function PricingPage() {
 
       {offers.length > 0 && (
         <div className="mt-16">
-          <h2 className="section-title">{t("pricing.offersTitle")}</h2>
-          <p className="section-subtitle">{t("pricing.offersSubtitle")}</p>
+          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row md:text-left">
+            <div>
+              <h2 className="section-title">{t("pricing.offersTitle")}</h2>
+              <p className="section-subtitle">{t("pricing.offersSubtitle")}</p>
+            </div>
+            <Button asChild>
+              <a href="/offers">{t("pricing.offersCta")}</a>
+            </Button>
+          </div>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {offers.map((offer) => (
               <Card key={offer.id}>
