@@ -64,7 +64,7 @@ npm run start
 
 1. Push the repo to GitHub.
 2. Import in Vercel.
-3. Add `NEXT_PUBLIC_SITE_URL`, `ADMIN_PASSWORD`, and `PIXEL_ID` in Vercel Environment Variables.
+3. Add `NEXT_PUBLIC_SITE_URL`, `ADMIN_PASSWORD`, `PIXEL_ID`, and `POSTGRES_URL` in Vercel Environment Variables.
 4. Deploy.
 
 ## Checklist before go-live
@@ -75,3 +75,10 @@ npm run start
 - Verify booking/contact API writes are acceptable for production.
 - Run `npm run lint` and `npm run test`.
 - Confirm sitemap and metadata on production URL.
+
+## Database (Vercel Postgres)
+
+1. In Vercel, create a Postgres database and connect it to this project.
+2. Copy the `POSTGRES_URL` connection string to your environment variables.
+3. Deploy once so tables auto-create, or run the SQL in `db/schema.sql`.
+4. Bookings/contacts will now persist in Postgres.
