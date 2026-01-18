@@ -34,19 +34,21 @@ export async function ensureTables() {
 }
 
 export async function insertBooking(requestId: string, data: BookingInput) {
+  const utm = data.utm ? JSON.stringify(data.utm) : null;
   await ensureTables();
   await sql`
     INSERT INTO bookings (id, name, phone, service, date, time, message, utm)
     VALUES (${requestId}, ${data.name}, ${data.phone}, ${data.service}, ${data.date}, ${data.time}, ${
       data.message || null
-    }, ${data.utm || null})
+    }, ${utm}::jsonb)
   `;
 }
 
 export async function insertContact(requestId: string, data: ContactInput) {
+  const utm = data.utm ? JSON.stringify(data.utm) : null;
   await ensureTables();
   await sql`
     INSERT INTO contacts (id, name, phone, message, utm)
-    VALUES (${requestId}, ${data.name}, ${data.phone}, ${data.message}, ${data.utm || null})
+    VALUES (${requestId}, ${data.name}, ${data.phone}, ${data.message}, ${utm}::jsonb)
   `;
 }
