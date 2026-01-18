@@ -49,6 +49,8 @@ export default function BookingForm() {
     }
   };
 
+  const minDate = new Date().toISOString().split("T")[0];
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid gap-4 md:grid-cols-2">
@@ -82,7 +84,7 @@ export default function BookingForm() {
       <div className="grid gap-4 md:grid-cols-2">
         <div className="space-y-2">
           <Label htmlFor="date">{t("booking.form.date")}</Label>
-          <Input id="date" type="date" {...register("date")} />
+          <Input id="date" type="date" min={minDate} {...register("date")} />
           {errors.date && <p className="text-xs text-red-500">{errors.date.message}</p>}
         </div>
         <div className="space-y-2">
