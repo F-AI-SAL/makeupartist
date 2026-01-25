@@ -1,12 +1,29 @@
 "use client";
 
+import type { Dispatch, SetStateAction } from "react";
+
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
+type SiteSettings = {
+  name: string;
+  description: string;
+  phone: string;
+  address: string;
+  pixelId: string;
+  socials: {
+    facebook: string;
+    instagram: string;
+    youtube: string;
+    tiktok: string;
+    whatsapp: string;
+  };
+};
+
 type SiteSettingsFormProps = {
-  siteSettings: Record<string, any>;
-  setSiteSettings: (value: Record<string, any>) => void;
+  siteSettings: SiteSettings;
+  setSiteSettings: Dispatch<SetStateAction<SiteSettings>>;
   saveSiteSettings: () => Promise<void>;
 };
 

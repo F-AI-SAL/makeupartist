@@ -1,13 +1,23 @@
 "use client";
 
+import type { Dispatch, SetStateAction } from "react";
+
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
+type ServiceDraft = {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  price: string;
+};
+
 type ServicesFormProps = {
   services: Array<any>;
-  newService: Record<string, any>;
-  setNewService: (value: Record<string, any>) => void;
+  newService: ServiceDraft;
+  setNewService: Dispatch<SetStateAction<ServiceDraft>>;
   uploadFile: (file: File, folder: string) => Promise<string>;
   handleCreate: (endpoint: string, payload: Record<string, unknown>) => Promise<void>;
   handleDelete: (endpoint: string, id: string) => Promise<void>;

@@ -1,13 +1,24 @@
 "use client";
 
+import type { Dispatch, SetStateAction } from "react";
+
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
+type OfferDraft = {
+  id: string;
+  title: string;
+  description: string;
+  discount: string;
+  startDate: string;
+  endDate: string;
+};
+
 type OffersFormProps = {
   offers: Array<any>;
-  newOffer: Record<string, any>;
-  setNewOffer: (value: Record<string, any>) => void;
+  newOffer: OfferDraft;
+  setNewOffer: Dispatch<SetStateAction<OfferDraft>>;
   handleCreate: (endpoint: string, payload: Record<string, unknown>) => Promise<void>;
   handleDelete: (endpoint: string, id: string) => Promise<void>;
   nextId: React.MutableRefObject<string>;

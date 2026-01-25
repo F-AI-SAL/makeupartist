@@ -42,9 +42,9 @@ function getStatus(offer: OfferRecord) {
 }
 
 export async function getOffers(): Promise<OfferWithStatus[]> {
-  const offers = isDbEnabled()
+  const offers: OfferRecord[] = isDbEnabled()
     ? ((await getCollection("offers")) as OfferRecord[])
-    : JSON.parse(await fs.readFile(OFFERS_PATH, "utf8").catch(() => "[]"));
+    : (JSON.parse(await fs.readFile(OFFERS_PATH, "utf8").catch(() => "[]")) as OfferRecord[]);
   return offers.map((offer) => ({
     ...offer,
     slug: slugify(offer.title),
