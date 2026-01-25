@@ -1,4 +1,6 @@
 import { dataPath, readJson } from "./storage";
+import { getSingleton } from "./db-admin";
+import { isDbEnabled } from "./db";
 
 export type ServiceMenuItem = {
   name: string;
@@ -101,5 +103,7 @@ export const defaultServiceMenu: ServiceMenuData = {
 };
 
 export async function getServiceMenu(): Promise<ServiceMenuData> {
-  return await readJson(MENU_PATH, defaultServiceMenu);
+  return isDbEnabled()
+    ? await getSingleton<ServiceMenuData>("menu", defaultServiceMenu)
+    : await readJson(MENU_PATH, defaultServiceMenu);
 }

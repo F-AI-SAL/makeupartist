@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { siteConfigClient } from "../../lib/site-client";
+import { useSiteConfig } from "../../lib/hooks/useSiteConfig";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 
 export default function Footer() {
   const { t } = useTranslation();
-  const [site, setSite] = useState(siteConfigClient);
+  const { site } = useSiteConfig();
   const links = t("footer.links", { returnObjects: true }) as Array<{ label: string; href: string }>;
   const hours = t("footer.hours", { returnObjects: true }) as string[];
   const socials = useMemo(
@@ -24,18 +24,6 @@ export default function Footer() {
       ].filter((item) => item.href),
     [site.socials]
   );
-
-  useEffect(() => {
-    const load = async () => {
-      const response = await fetch("/api/site");
-      if (!response.ok) return;
-      const json = await response.json();
-      if (json?.data) {
-        setSite(json.data);
-      }
-    };
-    void load();
-  }, []);
 
   return (
     <footer className="mt-20 bg-neutral-900 text-neutral-100">

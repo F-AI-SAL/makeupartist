@@ -1,31 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 import { Button } from "../ui/button";
 import LanguageToggle from "../LanguageToggle";
-import { siteConfigClient } from "../../lib/site-client";
+import { useSiteConfig } from "../../lib/hooks/useSiteConfig";
 
 export default function Navbar() {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const navItems = t("nav.items", { returnObjects: true }) as Array<{ label: string; href: string }>;
-  const [site, setSite] = useState(siteConfigClient);
-
-  useEffect(() => {
-    const load = async () => {
-      const response = await fetch("/api/site");
-      if (!response.ok) return;
-      const json = await response.json();
-      if (json?.data) {
-        setSite(json.data);
-      }
-    };
-    void load();
-  }, []);
+  const { site } = useSiteConfig();
 
   return (
     <header className="sticky top-0 z-40 border-b border-peach-100/60 bg-white/70 backdrop-blur">

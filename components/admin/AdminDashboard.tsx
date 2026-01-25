@@ -5,6 +5,10 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import ServicesForm from "./ServicesForm";
+import OffersForm from "./OffersForm";
+import SiteSettingsForm from "./SiteSettingsForm";
+import MenuForm from "./MenuForm";
 
 const emptyService = { id: "", title: "", description: "", image: "", price: "" };
 const emptyTeam = { id: "", name: "", role: "", image: "", bio: "" };
@@ -237,151 +241,21 @@ export default function AdminDashboard() {
         </Button>
       </div>
       {status && <p className="mt-3 text-sm text-peach-600">{status}</p>}
+      <ServicesForm
+        services={services}
+        newService={newService}
+        setNewService={setNewService}
+        uploadFile={uploadFile}
+        handleCreate={handleCreate}
+        handleDelete={handleDelete}
+        nextId={nextId}
+      />
 
-      <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
-        <h2 className="font-serif text-2xl text-neutral-900">Services</h2>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <Input
-            placeholder="Service title"
-            value={newService.title}
-            onChange={(e) => setNewService({ ...newService, title: e.target.value })}
-          />
-          <Input
-            placeholder="Price"
-            value={newService.price}
-            onChange={(e) => setNewService({ ...newService, price: e.target.value })}
-          />
-          <Textarea
-            placeholder="Description"
-            value={newService.description}
-            onChange={(e) => setNewService({ ...newService, description: e.target.value })}
-          />
-          <Input
-            placeholder="Image URL"
-            value={newService.image}
-            onChange={(e) => setNewService({ ...newService, image: e.target.value })}
-          />
-          <Input
-            type="file"
-            onChange={async (e) => {
-              if (!e.target.files?.[0]) return;
-              const url = await uploadFile(e.target.files[0], "services");
-              setNewService({ ...newService, image: url });
-            }}
-          />
-        </div>
-        <Button
-          className="mt-4"
-          onClick={() =>
-            handleCreate("services", { ...newService, id: newService.id || `svc-${nextId.current}` })
-          }
-        >
-          Add Service
-        </Button>
-        <div className="mt-4 space-y-3">
-          {services.map((svc) => (
-            <div key={svc.id} className="flex items-center justify-between rounded-xl border p-3">
-              <div>
-                <p className="font-semibold">{svc.title}</p>
-                <p className="text-xs text-neutral-500">{svc.price}</p>
-              </div>
-              <Button variant="outline" size="sm" onClick={() => handleDelete("services", svc.id)}>
-                Remove
-              </Button>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
-        <h2 className="font-serif text-2xl text-neutral-900">Site Settings</h2>
-        <p className="mt-1 text-sm text-neutral-600">Update phone, address, and social links.</p>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <Input
-            placeholder="Brand name"
-            value={siteSettings.name}
-            onChange={(e) => setSiteSettings({ ...siteSettings, name: e.target.value })}
-          />
-          <Input
-            placeholder="Phone"
-            value={siteSettings.phone}
-            onChange={(e) => setSiteSettings({ ...siteSettings, phone: e.target.value })}
-          />
-          <Input
-            placeholder="Address"
-            value={siteSettings.address}
-            onChange={(e) => setSiteSettings({ ...siteSettings, address: e.target.value })}
-          />
-          <Input
-            placeholder="Meta Pixel ID (optional)"
-            value={siteSettings.pixelId}
-            onChange={(e) => setSiteSettings({ ...siteSettings, pixelId: e.target.value })}
-          />
-          <Textarea
-            placeholder="Short description"
-            value={siteSettings.description}
-            onChange={(e) => setSiteSettings({ ...siteSettings, description: e.target.value })}
-          />
-          <div className="grid gap-2">
-            <Input
-              placeholder="Facebook URL"
-              value={siteSettings.socials.facebook}
-              onChange={(e) =>
-                setSiteSettings({
-                  ...siteSettings,
-                  socials: { ...siteSettings.socials, facebook: e.target.value }
-                })
-              }
-            />
-            <Input
-              placeholder="Instagram URL"
-              value={siteSettings.socials.instagram}
-              onChange={(e) =>
-                setSiteSettings({
-                  ...siteSettings,
-                  socials: { ...siteSettings.socials, instagram: e.target.value }
-                })
-              }
-            />
-            <Input
-              placeholder="YouTube URL"
-              value={siteSettings.socials.youtube}
-              onChange={(e) =>
-                setSiteSettings({
-                  ...siteSettings,
-                  socials: { ...siteSettings.socials, youtube: e.target.value }
-                })
-              }
-            />
-            <Input
-              placeholder="TikTok URL"
-              value={siteSettings.socials.tiktok}
-              onChange={(e) =>
-                setSiteSettings({
-                  ...siteSettings,
-                  socials: { ...siteSettings.socials, tiktok: e.target.value }
-                })
-              }
-            />
-            <Input
-              placeholder="WhatsApp URL"
-              value={siteSettings.socials.whatsapp}
-              onChange={(e) =>
-                setSiteSettings({
-                  ...siteSettings,
-                  socials: { ...siteSettings.socials, whatsapp: e.target.value }
-                })
-              }
-            />
-          </div>
-        </div>
-        <p className="mt-3 text-xs text-neutral-500">
-          Tip: PIXEL_ID env var overrides this pixel field on production.
-        </p>
-        <Button className="mt-4" onClick={saveSiteSettings}>
-          Save Site Settings
-        </Button>
-      </section>
+      <SiteSettingsForm
+        siteSettings={siteSettings}
+        setSiteSettings={setSiteSettings}
+        saveSiteSettings={saveSiteSettings}
+      />
 
       <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
         <h2 className="font-serif text-2xl text-neutral-900">Team Members</h2>
@@ -436,167 +310,26 @@ export default function AdminDashboard() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
-        <h2 className="font-serif text-2xl text-neutral-900">Weekly Offers & Discounts</h2>
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          <Input
-            placeholder="Offer title"
-            value={newOffer.title}
-            onChange={(e) => setNewOffer({ ...newOffer, title: e.target.value })}
-          />
-          <Input
-            placeholder="Discount (e.g. 10%)"
-            value={newOffer.discount}
-            onChange={(e) => setNewOffer({ ...newOffer, discount: e.target.value })}
-          />
-          <Input
-            type="date"
-            value={newOffer.startDate}
-            onChange={(e) => setNewOffer({ ...newOffer, startDate: e.target.value })}
-          />
-          <Input
-            type="date"
-            value={newOffer.endDate}
-            onChange={(e) => setNewOffer({ ...newOffer, endDate: e.target.value })}
-          />
-          <Textarea
-            placeholder="Description"
-            value={newOffer.description}
-            onChange={(e) => setNewOffer({ ...newOffer, description: e.target.value })}
-          />
-        </div>
-        <Button
-          className="mt-4"
-          onClick={() => handleCreate("offers", { ...newOffer, id: newOffer.id || `offer-${nextId.current}` })}
-        >
-          Add Offer
-        </Button>
-        <div className="mt-4 space-y-3">
-          {offers.map((offer) => (
-            <div key={offer.id} className="flex items-center justify-between rounded-xl border p-3">
-              <div>
-                <p className="font-semibold">{offer.title}</p>
-                <p className="text-xs text-neutral-500">{offer.discount}</p>
-              </div>
-              <Button variant="outline" size="sm" onClick={() => handleDelete("offers", offer.id)}>
-                Remove
-              </Button>
-            </div>
-          ))}
-        </div>
-      </section>
+      <OffersForm
+        offers={offers}
+        newOffer={newOffer}
+        setNewOffer={setNewOffer}
+        handleCreate={handleCreate}
+        handleDelete={handleDelete}
+        nextId={nextId}
+      />
 
-      <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
-        <h2 className="font-serif text-2xl text-neutral-900">Service Menu (BN + EN)</h2>
-        <p className="text-sm text-neutral-600">
-          Add sections and items in Bangla and English. Images can be uploaded or pasted as URLs.
-        </p>
-        {(["bn", "en"] as Array<"bn" | "en">).map((lang) => (
-          <div key={lang} className="mt-6 rounded-2xl border border-peach-100 bg-white/60 p-4">
-            <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-neutral-700">
-                {lang === "bn" ? "বাংলা মেনু" : "English menu"}
-              </p>
-              <Button variant="outline" size="sm" onClick={() => addSection(lang)}>
-                Add section
-              </Button>
-            </div>
-            <div className="mt-4 space-y-5">
-              {menuData[lang].map((section, sectionIndex) => (
-                <div key={`${lang}-${sectionIndex}`} className="rounded-xl border border-peach-100 p-4">
-                  <div className="flex items-center justify-between">
-                    <p className="text-sm font-semibold">Section {sectionIndex + 1}</p>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => removeSection(lang, sectionIndex)}
-                    >
-                      Remove
-                    </Button>
-                  </div>
-                  <div className="mt-3 grid gap-3 md:grid-cols-2">
-                    <Input
-                      placeholder="Title"
-                      value={section.title}
-                      onChange={(e) => updateSection(lang, sectionIndex, { title: e.target.value })}
-                    />
-                    <Input
-                      placeholder="Badge (optional)"
-                      value={section.badge || ""}
-                      onChange={(e) => updateSection(lang, sectionIndex, { badge: e.target.value })}
-                    />
-                    <Textarea
-                      placeholder="Short description"
-                      value={section.description}
-                      onChange={(e) => updateSection(lang, sectionIndex, { description: e.target.value })}
-                    />
-                    <div className="space-y-2">
-                      <Input
-                        placeholder="Image URL"
-                        value={section.image}
-                        onChange={(e) => updateSection(lang, sectionIndex, { image: e.target.value })}
-                      />
-                      <Input
-                        type="file"
-                        onChange={async (e) => {
-                          if (!e.target.files?.[0]) return;
-                          const url = await uploadFile(e.target.files[0], "services");
-                          updateSection(lang, sectionIndex, { image: url });
-                        }}
-                      />
-                    </div>
-                    <select
-                      className="h-11 w-full rounded-xl border border-peach-100 bg-white/80 px-4 text-sm"
-                      value={section.align || "left"}
-                      onChange={(e) => updateSection(lang, sectionIndex, { align: e.target.value })}
-                    >
-                      <option value="left">Image left</option>
-                      <option value="right">Image right</option>
-                    </select>
-                  </div>
-                  <div className="mt-4 space-y-3">
-                    {section.items?.map((item: any, itemIndex: number) => (
-                      <div key={`${lang}-${sectionIndex}-${itemIndex}`} className="grid gap-3 md:grid-cols-[1fr_1fr_auto]">
-                        <Input
-                          placeholder="Item name"
-                          value={item.name}
-                          onChange={(e) =>
-                            updateItem(lang, sectionIndex, itemIndex, { name: e.target.value })
-                          }
-                        />
-                        <Input
-                          placeholder="Price"
-                          value={item.price}
-                          onChange={(e) =>
-                            updateItem(lang, sectionIndex, itemIndex, { price: e.target.value })
-                          }
-                        />
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => removeItem(lang, sectionIndex, itemIndex)}
-                        >
-                          Remove
-                        </Button>
-                      </div>
-                    ))}
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => addItem(lang, sectionIndex)}
-                    >
-                      Add item
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-        <Button className="mt-4" onClick={saveMenu}>
-          Save Service Menu
-        </Button>
-      </section>
+      <MenuForm
+        menuData={menuData}
+        addSection={addSection}
+        removeSection={removeSection}
+        updateSection={updateSection}
+        addItem={addItem}
+        removeItem={removeItem}
+        updateItem={updateItem}
+        uploadFile={uploadFile}
+        saveMenu={saveMenu}
+      />
 
       <section className="mt-10 rounded-2xl bg-white/80 p-6 shadow-card">
         <h2 className="font-serif text-2xl text-neutral-900">Calendar & Slot Setup</h2>

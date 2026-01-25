@@ -2,6 +2,8 @@ import fs from "node:fs/promises";
 import path from "node:path";
 
 import { slugify } from "./slug";
+import { getCollection } from "./db-admin";
+import { isDbEnabled } from "./db";
 
 export type OfferRecord = {
   id: string;
@@ -40,8 +42,9 @@ function getStatus(offer: OfferRecord) {
 }
 
 export async function getOffers(): Promise<OfferWithStatus[]> {
-  const raw = await fs.readFile(OFFERS_PATH, "utf8").catch(() => "[]");
-  const offers = JSON.parse(raw) as OfferRecord[];
+  const offers = isDbEnabled()
+    ? ((await getCollection("offers")) as OfferRecord[])
+    : JSON.parse(await fs.readFile(OFFERS_PATH, "utf8").catch(() => "[]"));
   return offers.map((offer) => ({
     ...offer,
     slug: slugify(offer.title),

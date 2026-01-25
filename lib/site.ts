@@ -1,4 +1,6 @@
 import { dataPath, readJson } from "./storage";
+import { getSingleton } from "./db-admin";
+import { isDbEnabled } from "./db";
 
 export type SiteConfig = {
   name: string;
@@ -37,5 +39,7 @@ export const defaultSiteConfig: SiteConfig = {
 export const siteConfig = defaultSiteConfig;
 
 export async function getSiteConfig(): Promise<SiteConfig> {
-  return await readJson(SITE_PATH, defaultSiteConfig);
+  return isDbEnabled()
+    ? await getSingleton<SiteConfig>("site", defaultSiteConfig)
+    : await readJson(SITE_PATH, defaultSiteConfig);
 }

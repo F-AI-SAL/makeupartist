@@ -1,26 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import ContactForm from "../sections/ContactForm";
-import { siteConfigClient } from "../../lib/site-client";
+import { useSiteConfig } from "../../lib/hooks/useSiteConfig";
 
 export default function ContactPage() {
   const { t } = useTranslation();
-  const [site, setSite] = useState(siteConfigClient);
-
-  useEffect(() => {
-    const load = async () => {
-      const response = await fetch("/api/site");
-      if (!response.ok) return;
-      const json = await response.json();
-      if (json?.data) {
-        setSite(json.data);
-      }
-    };
-    void load();
-  }, []);
+  const { site } = useSiteConfig();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
