@@ -65,6 +65,7 @@ npm run start
 1. Push the repo to GitHub.
 2. Import in Vercel.
 3. Add `NEXT_PUBLIC_SITE_URL`, `ADMIN_PASSWORD`, `PIXEL_ID`, and `POSTGRES_URL` in Vercel Environment Variables.
+4. Optional microservices: set `BOOKING_SERVICE_URL` and `CMS_SERVICE_URL`.
 4. Deploy.
 
 ## Checklist before go-live
@@ -82,3 +83,23 @@ npm run start
 2. Copy the `POSTGRES_URL` connection string to your environment variables.
 3. Deploy once so tables auto-create, or run the SQL in `db/schema.sql`.
 4. Bookings/contacts will now persist in Postgres.
+
+## Microservices (Railway)
+
+This repo includes two backend services you can deploy separately so the website stays up even if one service fails.
+
+- Booking Service: `/services/booking`
+- CMS Service: `/services/cms`
+
+### Deploy steps
+
+1. Create two Railway projects (one for booking, one for CMS).
+2. Add env vars: `POSTGRES_URL`, `ADMIN_PASSWORD` (CMS), `PORT`.
+3. Set the service start command:
+   - Booking: `npm install && npm run start`
+   - CMS: `npm install && npm run start`
+4. Copy the public Railway URLs and set in Vercel:
+   - `BOOKING_SERVICE_URL=https://your-booking-service`
+   - `CMS_SERVICE_URL=https://your-cms-service`
+
+When these URLs are set, Next.js API routes proxy to the services automatically.

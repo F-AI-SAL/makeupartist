@@ -5,10 +5,14 @@ import { dataPath, readJson, writeJson } from "../../../../lib/storage";
 import { assertAdminAuth } from "../../../../lib/admin-auth";
 import { deleteItem, getCollection, upsertItem } from "../../../../lib/db-admin";
 import { isDbEnabled } from "../../../../lib/db";
+import { proxyRequest } from "../../../../lib/proxy";
 
 const FILE_PATH = dataPath("team.json");
 
-export async function GET() {
+export async function GET(req: Request) {
+  if (process.env.CMS_SERVICE_URL) {
+    return proxyRequest(req, `${process.env.CMS_SERVICE_URL}/team`);
+  }
   const data = isDbEnabled()
     ? await getCollection("team")
     : await readJson(FILE_PATH, [] as Array<Record<string, unknown>>);
@@ -21,6 +25,12 @@ export async function POST(req: Request) {
       { ok: false, requestId: "auth", error: "Unauthorized" },
       { status: 401 }
     );
+  }
+
+  if (process.env.CMS_SERVICE_URL) {
+    return proxyRequest(req, `${process.env.CMS_SERVICE_URL}/admin/team`, {
+      "x-admin-password": process.env.ADMIN_PASSWORD || ""
+    });
   }
 
   const body = await req.json();
@@ -42,6 +52,12 @@ export async function PUT(req: Request) {
     );
   }
 
+  if (process.env.CMS_SERVICE_URL) {
+    return proxyRequest(req, `${process.env.CMS_SERVICE_URL}/admin/team`, {
+      "x-admin-password": process.env.ADMIN_PASSWORD || ""
+    });
+  }
+
   const body = await req.json();
   if (isDbEnabled()) {
     await upsertItem("team", body);
@@ -59,6 +75,12 @@ export async function DELETE(req: Request) {
       { ok: false, requestId: "auth", error: "Unauthorized" },
       { status: 401 }
     );
+  }
+
+  if (process.env.CMS_SERVICE_URL) {
+    return proxyRequest(req, `${process.env.CMS_SERVICE_URL}/admin/team`, {
+      "x-admin-password": process.env.ADMIN_PASSWORD || ""
+    });
   }
 
   const { searchParams } = new URL(req.url);

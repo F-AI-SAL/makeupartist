@@ -6,10 +6,15 @@ import { bookingSchema } from "../../../lib/validation";
 import type { ApiResponse } from "../../../lib/api";
 import { dataPath } from "../../../lib/storage";
 import { insertBooking, isDbEnabled } from "../../../lib/db";
+import { proxyRequest } from "../../../lib/proxy";
 
 const BOOKINGS_PATH = dataPath("bookings.json");
 
 export async function POST(req: Request) {
+  if (process.env.BOOKING_SERVICE_URL) {
+    return proxyRequest(req, `${process.env.BOOKING_SERVICE_URL}/booking`);
+  }
+
   const requestId = randomUUID();
 
   try {

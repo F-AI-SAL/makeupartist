@@ -1,0 +1,16 @@
+{
+  "name": "go-glow-booking-service",
+  "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "pg": "^8.13.1",
+    "zod": "^3.23.8"
+  }
+}

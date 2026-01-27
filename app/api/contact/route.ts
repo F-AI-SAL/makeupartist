@@ -6,10 +6,15 @@ import { contactSchema } from "../../../lib/validation";
 import type { ApiResponse } from "../../../lib/api";
 import { dataPath } from "../../../lib/storage";
 import { insertContact, isDbEnabled } from "../../../lib/db";
+import { proxyRequest } from "../../../lib/proxy";
 
 const CONTACTS_PATH = dataPath("contacts.json");
 
 export async function POST(req: Request) {
+  if (process.env.BOOKING_SERVICE_URL) {
+    return proxyRequest(req, `${process.env.BOOKING_SERVICE_URL}/contact`);
+  }
+
   const requestId = randomUUID();
 
   try {
